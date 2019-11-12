@@ -1,34 +1,21 @@
 .form-container {
     text-align: center;
-    margin: 2.5em  auto;
+    margin: 5em  auto;
     width: 50%;
 }
 
 form {
-    margin: 3em 0;
+    margin: 4em 0;
 }
 
 .form-container input {
     border: 2px solid pink;
     border-radius: 2px;
     padding: 10px;
-    margin-bottom: 1em;
+    margin-bottom: 1.2em;
     height: 3em;
     font-size: 15px;
-}
-
-.form-container div {
-    display: flex;
-    justify-content: space-between;
-}
-
-.form-container div input {
-    width: 45%;
-}
-
-.info {
-    width: 100%;
-    margin-bottom: 1em;
+    width: 70%;
 }
 
 .btn-reg {
@@ -40,20 +27,13 @@ form {
     margin-top: 2em;
     height: 3em;
     width: 70%;
-    font-size: 15px; 
+    font-size: 15px;  
 }
 
 @media (max-width: 720px){
     .form-container {
-        width: 70%;
-    }
-
-    .form-container div {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .form-container div input {
+        text-align: center;
+        margin: 5em  auto;
         width: 100%;
     }
 }

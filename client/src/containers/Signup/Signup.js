@@ -22,6 +22,7 @@ const Signup = () => {
                 <input type='text' placeholder='Jobrole' className='info' /><br />
                 <input type='text' placeholder='Department' className='info' /><br />
                 <input type='text' placeholder='Address' className='info' /><br />
+                <button className='btn-reg'>Register</button>
             </form>
             <p>Already have an accout? please <a>login</a></p> 
         </div>
