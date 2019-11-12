@@ -1,0 +1,41 @@
+.form-container {
+    text-align: center;
+    margin: 2.5em  auto;
+    width: 50%;
+}
+
+form {
+    margin: 3em 0;
+}
+
+.form-container input {
+    border: 2px solid pink;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 1em;
+}
+
+.form-container div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-container div input {
+    width: 45%;
+}
+
+.info {
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+@media (max-width: 720px){
+    .form-container div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-container div input {
+        width: 100%;
+    }
+}

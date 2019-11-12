@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-// import Navbar from './components/Navbar/Navbar';
-import Footer from './components/Footer/Footer'
+import Signup from './containers/Signup/Signup';
 
 
 class App extends Component {
   render () {
     return (
-       <Footer />
+       <Signup />
     );
   }
 }
