@@ -1,0 +1,28 @@
+nav {
+    width: 15em;
+    text-align: center;
+    background-color: blue;
+    height: 100vh;
+    padding-top: 2em;
+}
+
+.app-name {
+    font-size: 2em;
+    color: salmon;
+    text-decoration: none;
+}
+
+.app-name:hover {
+    color: sienna;
+}
+
+nav ul > li {
+    padding: 1em;
+    color: red;
+    font-size: 1.5em;
+}
+
+nav ul > li:hover {
+    color: sandybrown;
+
+}
