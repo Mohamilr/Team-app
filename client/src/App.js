@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 // import Signin from './containers/Signin/Signin';
 // import Signup from './containers/Signup/Signup';
-import UserNav from './components/UserNav/UserNav';
+import Timeline from './Containers/Timeline/Timeline';
  
 
 class App extends Component {
   render () {
     return (
-      <UserNav />
+      <Timeline />
       //  <Signin />
       //  <Signup />
     );
