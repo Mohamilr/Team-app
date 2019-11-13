@@ -17,53 +17,105 @@
 }
 
 .article-container {
-   max-height: 35em;
-   overflow-y: scroll;
+  max-height: 35em;
+  overflow-y: scroll;
 }
 
 .article-container::-webkit-scrollbar {
-    width: 5px;
+  width: 5px;
 }
 
-
 .article-container::-webkit-scrollbar-track {
-box-shadow: 1px 1px 2px #aaa;
+  box-shadow: 1px 1px 2px #aaa;
   border-radius: 10px blue;
 }
 
 .article-container::-webkit-scrollbar-thumb {
-    background-color: green;
-    border-radius: 5px;
+  background-color: green;
+  border-radius: 5px;
 }
 
 .articles {
-    margin: 1em auto;
-    width: 80%;
-    border: 2px solid blue;
-    padding: 1em;
-    box-shadow: 1px 1px 2px #aaa;
+  margin: 1em auto;
+  width: 80%;
+  border: 2px solid blue;
+  padding: 1em;
+  box-shadow: 1px 1px 2px #aaa;
 }
 
 .article-properties {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 article {
-    padding: 1em 0;
+  padding: 1em 0;
 }
 
 .by {
-    font-weight: bold;
-} 
+  font-weight: bold;
+}
+
+/* gif style */
+.gif-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 2em;
+  margin: 0 1em;
+  max-height: 35em;
+  overflow-y: scroll
+}
+
+.gifs {
+  max-width: 20em;
+  border: 2px solid pink;
+  box-shadow: 1px 1px 2px #aaa;
+}
+
+.gif-image {
+  width: 100%;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.gif-container::-webkit-scrollbar {
+  width: 5px;
+}
+
+.gif-container::-webkit-scrollbar-track {
+  box-shadow: 1px 1px 2px #aaa;
+  border-radius: 10px blue;
+}
+
+.gif-container::-webkit-scrollbar-thumb {
+  background-color: green;
+  border-radius: 5px;
+}
+
+
 
 @media (max-width: 720px) {
-    .container {
-        display: grid;
-        grid-template-columns: 7fr;
-      }
-      
-      .article-container {
-        max-height: 100vh;
-     }
+  .container {
+    display: grid;
+    grid-template-columns: 7fr;
+  }
+
+  .article-container {
+    max-height: 100vh;
+  }
+
+  .article-properties {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* gif style */
+  .gif-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .gifs {
+    margin: 2em 0;
+  }
 }
