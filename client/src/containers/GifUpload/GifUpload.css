@@ -1,0 +1,52 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+}
+
+.gif-upload-container {
+  margin: 2em auto;
+  text-align: center;
+  width: 50%;
+}
+
+.upload-gif {
+  margin-top: 6em;  
+  border: 2px dotted green;
+  border-radius: 5px;
+}
+
+.fa-plus-circle {
+  font-size: 4em;
+  margin: 1em;
+}
+
+input[type='text'] {
+  align-self: center;
+  /* display: block; */
+  border: 2px solid pink;
+    border-radius: 2px;
+    padding: 10px;
+    margin-bottom: 1.2em;
+    height: 3em;
+    font-size: 15px;
+    width: 70%;
+}
+
+.preview {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 1em;
+    margin: auto;
+    width: 50%;
+    background-color: greenyellow;
+    border-radius: 5px;
+}
+
+.btn-upload {
+    background-color: greenyellow;
+    color: indigo;
+    border: 1px solid pink;
+    border-radius: 5px;
+    margin: 2em;
+    padding: 10px 20px;
+}
