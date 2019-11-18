@@ -1,0 +1,12 @@
+@import '../GifUpload/GifUpload.css';
+
+.write-article {
+   margin: 3em 0;
+   text-align: center;
+}
+
+.write-article textarea{
+    padding: 20px;
+    font-size: 20px;
+    width: 70%;
+}

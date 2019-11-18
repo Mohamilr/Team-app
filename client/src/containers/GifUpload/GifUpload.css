@@ -9,6 +9,10 @@
   width: 50%;
 }
 
+.header {
+  margin-bottom: 1em;
+}
+
 .upload-gif {
   margin-top: 6em;  
   border: 2px dotted green;
@@ -22,14 +26,13 @@
 
 input[type='text'] {
   align-self: center;
-  /* display: block; */
   border: 2px solid pink;
-    border-radius: 2px;
-    padding: 10px;
-    margin-bottom: 1.2em;
-    height: 3em;
-    font-size: 15px;
-    width: 70%;
+  border-radius: 2px;
+  padding: 10px;
+  margin-bottom: 1.2em;
+  height: 3em;
+  font-size: 15px;
+  width: 70%;
 }
 
 .preview {
