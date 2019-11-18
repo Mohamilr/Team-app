@@ -1,0 +1,31 @@
+@import '../Timeline/Timeline.css';
+
+.options {
+    text-align: center;
+    width: 20em;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.option {
+    text-align: center;
+    margin: 20px;
+}
+
+.btn {
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+.update { 
+    background-color: greenyellow;
+    color: indigo;
+    border: 1px solid pink;
+}
+
+.delete {
+    background-color: red;
+    color: indigo;
+    border: 1px solid pink;
+}
