@@ -14,7 +14,7 @@ const GifUpload = () => {
       <div className='container'>
     <UserNav />
        <div className='gif-upload-container'>
-           <h1>Upload A Gif</h1>
+           <h1 className='header'>Upload A Gif</h1>
            <div className='upload-gif'>
            <input type='file' className='input' style={{display: 'none'}} />
            <i className="fas fa-plus-circle" ></i>
