@@ -5,8 +5,9 @@
    text-align: center;
 }
 
-.write-article textarea{
+.textarea{
+    margin: auto;
     padding: 20px;
     font-size: 20px;
-    width: 70%;
+    width: 75%;
 }
