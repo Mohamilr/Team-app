@@ -26,7 +26,7 @@ class ArticlePage extends Component {
                     <div className='textarea'>
                     <FroalaEditor tag='textarea' />
                     </div>
-                <button className='btn-upload'>Upload</button>
+                <button className='btn-upload'>Publish</button>
                 </div>
                 
             </div>

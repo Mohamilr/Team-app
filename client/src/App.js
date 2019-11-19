@@ -3,14 +3,16 @@ import React, { Component } from 'react';
 // import Signup from './containers/Signup/Signup';
 // import Timeline from './Containers/Timeline/Timeline';
 // import GifUpload from './Containers/GifUpload/GifUpload'; 
-import ArticlePage from './Containers/CreateArticle/CreateArticle';
+// import ArticlePage from './Containers/CreateArticle/CreateArticle';
 // import MyFeeds from './Containers/MyFeeds/MyFeeds';
+import ProfilePage from './Containers/ProfilePage/ProfilePage';
 
 class App extends Component {
   render () {
     return (
+      <ProfilePage />
       // <MyFeeds />
-      <ArticlePage />
+      // <ArticlePage />
       // <GifUpload />
       // <Timeline />
       //  <Signin />
