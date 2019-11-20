@@ -1,4 +1,4 @@
-nav {
+.user-nav {
     width: 15em;
     text-align: center;
     background-color: blue;
@@ -16,13 +16,13 @@ nav {
     color: sienna;
 }
 
-nav ul > li {
+.user-nav ul > li {
     padding: 1em;
     color: red;
     font-size: 1.5em;
 }
 
-nav ul > li:hover {
+.user-nav ul > li:hover {
     color: sandybrown;
 
 }

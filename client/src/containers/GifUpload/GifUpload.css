@@ -24,7 +24,7 @@
   margin: 1em;
 }
 
-input[type='text'] {
+.title {
   align-self: center;
   border: 2px solid pink;
   border-radius: 2px;

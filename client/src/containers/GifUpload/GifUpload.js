@@ -18,7 +18,7 @@ const GifUpload = () => {
            <div className='upload-gif'>
            <input type='file' className='input' style={{display: 'none'}} />
            <i className="fas fa-plus-circle" ></i>
-           <input type='text' placeholder='Gif title' />
+           <input type='text' placeholder='Gif title' className='title'/>
            <div className='preview'>
              <p>gif name</p>
              <p>gif size</p>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 import './Signup.css';
@@ -24,7 +25,7 @@ const Signup = () => {
                 <input type='text' placeholder='Address' className='info' /><br />
                 <button className='btn-reg'>Register</button>
             </form>
-            <p>Already have an accout? please <a>login</a></p> 
+            <p>Already have an accout? please <Link to='/login'>login</Link></p> 
         </div>
         <Footer />
         </div>
