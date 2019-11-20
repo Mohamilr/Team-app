@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './UserNav.css';
+import './Usernav.css';
 
 const UserNav = () => {
     return (
