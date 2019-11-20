@@ -23,45 +23,45 @@ class Signup extends Component {
 
 
     formInput = (e) => {
-        let bodyValue = {...this.state.bodyValue};
+        let bodyValue = { ...this.state.bodyValue };
         bodyValue[e.target.name] = e.target.value;
-       
 
-     this.setState({
-        bodyValue: bodyValue
-     })
+
+        this.setState({
+            bodyValue: bodyValue
+        })
     }
 
-     handleFormSubmit = async () => {
+    handleFormSubmit = async () => {
         const response = await fetch('https://team-work-api.herokuapp.com/api/v1/auth/create-user', {
             method: 'POST',
-            body: JSON.stringify({...this.state.bodyValue}),
+            body: JSON.stringify({ ...this.state.bodyValue }),
             headers: {
                 'Content-Type': 'application/json'
             }
         })
-        .then(response => response.json())
-        .catch(e => {
-            console.log(e)
-        })
+            .then(response => response.json())
+            .catch(e => {
+                console.log(e)
+            })
 
         console.log(response)
-        if(response.status === 'error') {
+        if (response.status === 'error') {
             window.location = 'http://localhost:3000/register';
         }
-
-        if(response.status === 'success') {
+        else {
             window.location = 'http://localhost:3000/feeds';
         }
+        
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('id', response.data.authorId);
 
-       
-        
+
+
     }
 
-    
-    
+
+
     render() {
         return (
             <div>
