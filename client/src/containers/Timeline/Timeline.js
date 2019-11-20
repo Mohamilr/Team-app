@@ -1,5 +1,5 @@
 import React from 'react';
-import UserNav from '../../components//UserNav/UserNav';
+import UserNav from '../../components/UserNav/UserNav';
 import './Timeline.css';
 
 const Timeline = () => {
