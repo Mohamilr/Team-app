@@ -1,11 +1,11 @@
-nav {
+.main-nav {
   display: flex;
   background-color: green;
   justify-content: space-between;
   box-shadow: 1px 1px 2px #aaa;
 }
 
-nav a {
+.main-nav a {
   padding: 1em;
   font-size: 1em;
 }

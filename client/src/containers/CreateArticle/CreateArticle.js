@@ -22,7 +22,7 @@ class ArticlePage extends Component {
                 <UserNav />
                 <div className='write-article'>
                     <h1 className='header'>Write Your Article</h1>
-                    <input type='text' placeholder='Article Title' />
+                    <input type='text' placeholder='Article Title' className='title'  />
                     <div className='textarea'>
                     <FroalaEditor tag='textarea' />
                     </div>

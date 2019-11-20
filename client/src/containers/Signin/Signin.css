@@ -8,7 +8,7 @@ form {
     margin: 4em 0;
 }
 
-.form-container input {
+.form-container .details {
     border: 2px solid pink;
     border-radius: 2px;
     padding: 10px;
