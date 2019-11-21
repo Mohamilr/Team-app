@@ -16,17 +16,41 @@ import UserNav from '../../components/UserNav/UserNav';
 import './CreateArticle.css';
 
 class ArticlePage extends Component {
+    constructor () {
+        super();
+        this.state = {
+            bodyValue: {
+                title: '',
+                article: ''
+            }
+        }
+    }
+
+    formInput = (e) => {
+       let fieldData = {...this.state.bodyValue};
+       fieldData[e.target.name] = e.target.value;
+
+       this.setState({
+           bodyValue: fieldData
+       })
+
+       console.log(fieldData)
+    }
+
     render () {
         return (
             <div className='container'>
                 <UserNav />
                 <div className='write-article'>
                     <h1 className='header'>Write Your Article</h1>
-                    <input type='text' placeholder='Article Title' className='title'  />
+                    <form>
+                    <input type='text' placeholder='Article Title' name='title' className='title' onChange={this.formInput} />
                     <div className='textarea'>
-                    <FroalaEditor tag='textarea' />
+                        <textarea name='article' cols='20' onChange={this.formInput} ></textarea>
+                    <FroalaEditor name='article' model={this.state.content} onModelChanhe={this.handleModelChange} />
                     </div>
                 <button className='btn-upload'>Publish</button>
+                </form>
                 </div>
                 
             </div>
