@@ -32,36 +32,13 @@ class Timeline extends Component {
                 console.log(this.state.feeds)
             })
             .catch(e => console.log(e));
-        // console.log(this.state.)
     }
 
 
 
     render() {
         const { feeds } = this.state;
-        //     return(
-        //     <div>{article.id}</div>
-        // // <div>{article.aut}</div>
-        //     )
-        // })
-        // const all = feeds.map(articles, i => {
-        //    return ( <div>
-        //         <div className='articles' key={i}>
-        //                 <div className='article-properties'>
-        // <h3>{articles.title}</h3>
-        //                <p>{articles.createdon}</p>
-        //                 </div>
-        //                 <article>
-        //                {articles.article}
-        //                 </article>
-        //                 <div className='article-properties'>
-        //                     <div><span className='by'>BY</span> <span>{articles.authorid}</span></div>
-        //                     <p>comment icon <span>ok</span></p>
-        //                 </div>
-        //             </div>
-        //     </div>
-        //    )
-        // })
+
         return (
             <div className='container'>
                 <UserNav />
@@ -80,12 +57,7 @@ class Timeline extends Component {
                                     <article>
                                         {articles.article}
                                     </article>
-                                    {/* <div className='article-properties'>
-                                        <div><span className='by'>BY</span> <span>{articles.authorid}</span></div>
-                                        <p>comment icon <span>ok</span></p>
-                                    </div> */}
                                 </div>
-
                             )
                         })}
 
