@@ -1,55 +1,100 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import UserNav from '../../components/UserNav/UserNav';
 import './MyFeeds.css';
 
-const MyFeeds = () => {
-    return (
-        <div className='container'>
-            <UserNav />
-            <div className='right'>
-                <div className='headers'>
-                    <h4>Articles</h4> | <h4>Gifs</h4>
-                </div>
-                <div className='article-container'>
-                
-               
-                <div className='articles'>
-                    <div className='article-properties'>
-                    <h3>My first article</h3>
-                   <p>12-11-2019, 5:16 PM</p>
+class MyFeeds extends Component {
+    constructor() {
+        super();
+        this.state = {
+            myFeeds: []
+        }
+    }
+
+    componentDidMount() {
+        const token = localStorage.getItem('token')
+
+        fetch('https://team-work-api.herokuapp.com/api/v1/feed', {
+            method: 'GET',
+            headers: {
+                'authorization': `bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then((data) => {
+                this.setState({
+                    myFeeds: data.data
+                })
+                console.log(this.state.myFeeds)
+            })
+            .catch(e => console.log(e));
+    }
+
+    render() {
+        const { myFeeds } = this.state;
+        const id = localStorage.getItem('id');
+
+        return (
+            <div className='container' >
+                <UserNav />
+                <div className='right'>
+                    <div className='headers'>
+                        <h4>Articles</h4> | <h4>Gifs</h4>
                     </div>
-                    <article>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae tempore, rem in non magnam 
-                    assumenda, enim illo, saepe facere explicabo facilis. Vitae assumenda rerum accusantium unde voluptates!
-                     Distinctio repellendus sunt placeat, laboriosam ab numquam pariatur velit ratione fugiat asperiores quod quo fugit expedita qui totam ad voluptatum
-                    </article>
-                    <div className='article-properties'>
-                        <div><span className='by'>BY</span> <span>Mohammed Ibrahim</span></div>
-                        <p>comment icon <span>ok</span></p>
+                    <div className='article-container'>
+                        {myFeeds.map((articles, i) => {
+                            if (articles.authorid === id) {
+                                return (
+                                    <div className='articles' key={i}>
+                                        <div className='article-properties'>
+                                            <Link to='/'><h3>{articles.title}</h3></Link>
+                                            <p>{articles.createdon}</p>
+                                        </div>
+                                        <article>
+                                            {articles.article}
+                                        </article>
+                                        <div className='options'>
+                                            <button className='btn update'>Edit</button>
+                                            <button className='btn delete'>Delete</button>
+                                        </div>
+                                    </div>
+                                );
+                            }
+                        })}
                     </div>
-                    <div className='options'>
-                        <button className='btn update'>Edit</button>
-                        <button className='btn delete'>Delete</button>
+                    {/* gif area */}
+                    <div className='gif-container'>
+                        {myFeeds.map((gifs, i) => {
+                            if (gifs.gifauthorid === id) {
+                                if (gifs.length === 0) {
+                                    return (
+                                        <h1>NO gif available</h1>
+                                    )
+                                }
+                                else {
+                                    return (
+                                        <div className='gifs' key={i}>
+                                            <img src={gifs.image} alt='' className='gif-image' />
+                                            <div className='article-properties'>
+                                                <div>{gifs.gifcreatedon}</div>
+                                            </div>
+                                            <div className='option'>
+                                                <button className='btn delete'>Delete</button>
+                                            </div>
+                                        </div>
+                                    );
+                                }
+
+                            }
+                        })}
+
                     </div>
-                </div>
-                
-                </div>
-                {/* gif area */}
-                <div className='gif-container'>
-                  <div className='gifs'>
-                    <img src='https://res.cloudinary.com/project-s/image/upload/v1573638728/q9koruze2ewqbhr5blk2.gif' alt='' className='gif-image' />
-                    <div className='article-properties'>
-                        <div><span className='by'>BY</span> <span>Mohammed Ibrahim</span></div>
-                        <p>comment icon <span>1</span></p>
-                    </div>
-                    <div className='option'>
-                        <button className='btn delete'>Delete</button>
-                    </div>
-                  </div>                  
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
+
 };
 
 
