@@ -3,18 +3,21 @@ import { Link } from 'react-router-dom';
 import UserNav from '../../components/UserNav/UserNav';
 import './MyFeeds.css';
 
+const baseUrl = 'https://team-work-api.herokuapp.com/api/v1';
+
 class MyFeeds extends Component {
     constructor() {
         super();
         this.state = {
-            myFeeds: []
+            myFeeds: [],
+            token: ''
         }
     }
 
     componentDidMount() {
         const token = localStorage.getItem('token')
 
-        fetch('https://team-work-api.herokuapp.com/api/v1/feed', {
+        fetch(`${baseUrl}/feed`, {
             method: 'GET',
             headers: {
                 'authorization': `bearer ${token}`,
@@ -24,16 +27,50 @@ class MyFeeds extends Component {
             .then(res => res.json())
             .then((data) => {
                 this.setState({
-                    myFeeds: data.data
+                    myFeeds: data.data,
+                    token: token
                 })
                 console.log(this.state.myFeeds)
+                
             })
             .catch(e => console.log(e));
     }
 
+
+    // delete article
+    handleArticleDelete = (id) => {
+      fetch(`${baseUrl}/articles/${id}`, {
+          method: 'DELETE',
+          headers: {
+              'authorization': `bearer ${this.state.token}`,
+              'Content-Type': 'application/json'
+          }
+      })
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(e => console.log(e));
+    }
+
+
+    // delete gif
+    handleGifDelete = (id) => {
+        fetch(`${baseUrl}/gifs/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'authorization': `bearer ${this.state.token}`,
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(e => console.log(e));
+      }
+
+
+
     render() {
         const { myFeeds } = this.state;
-        const id = localStorage.getItem('id');
+        const id = parseInt(localStorage.getItem('id'))
 
         return (
             <div className='container' >
@@ -56,7 +93,10 @@ class MyFeeds extends Component {
                                         </article>
                                         <div className='options'>
                                             <button className='btn update'>Edit</button>
-                                            <button className='btn delete'>Delete</button>
+                                            <button className='btn delete' onClick={(e)=> {
+                                                e.preventDefault();
+                                                this.handleArticleDelete(articles.articleid);
+                                            }}>Delete</button>
                                         </div>
                                     </div>
                                 );
@@ -67,12 +107,12 @@ class MyFeeds extends Component {
                     <div className='gif-container'>
                         {myFeeds.map((gifs, i) => {
                             if (gifs.gifauthorid === id) {
-                                if (gifs.length === 0) {
-                                    return (
-                                        <h1>NO gif available</h1>
-                                    )
-                                }
-                                else {
+                                // if (gifs.length === 0) {
+                                //     return (
+                                //         <h1>NO gif available</h1>
+                                //     )
+                                // }
+                            
                                     return (
                                         <div className='gifs' key={i}>
                                             <img src={gifs.image} alt='' className='gif-image' />
@@ -80,11 +120,13 @@ class MyFeeds extends Component {
                                                 <div>{gifs.gifcreatedon}</div>
                                             </div>
                                             <div className='option'>
-                                                <button className='btn delete'>Delete</button>
+                                                <button className='btn delete' onClick={(e) => {
+                                                    e.preventDefault();
+                                                    this.handleGifDelete(gifs.gifid);
+                                                }}>Delete</button>
                                             </div>
                                         </div>
                                     );
-                                }
 
                             }
                         })}

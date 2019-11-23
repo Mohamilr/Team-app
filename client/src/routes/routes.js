@@ -6,7 +6,7 @@ import Signin from '../Containers/Signin/Signin';
 import CreateArticle from '../Containers/CreateArticle/CreateArticle';
 import GifUpload from '../Containers/GifUpload/GifUpload';
 import MyFeeds from '../Containers/MyFeeds/MyFeeds';
-import ProfilePage from '../Containers/ProfilePage/ProfilePage';
+// import ProfilePage from '../Containers/ProfilePage/ProfilePage';
 import Timeline from '../Containers/Timeline/Timeline';
 import NotFound from '../components/NotFound/NotFound';
 
@@ -21,7 +21,7 @@ class Routes extends Component {
              <Route path='/article' component={CreateArticle} />
              <Route path='/gif' component={GifUpload} />
              <Route path='/posts' component={MyFeeds} />
-             <Route path='/profile' component={ProfilePage} />
+             {/* <Route path='/profile' component={ProfilePage} /> */}
              <Route path='/feeds' component={Timeline} />
              <Route component={NotFound} />
             </div>

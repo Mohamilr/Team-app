@@ -13,7 +13,7 @@ const UserNav = () => {
                 <li><Link to='/article'>Post Article</Link></li>
                 <li><Link to='/gif'>Post Gif</Link></li>
                 <li><Link to='/posts'>My Posts</Link></li>
-                <li><Link to='/profile'>Profile</Link></li>
+                {/* <li><Link to='/profile'>Profile</Link></li> */}
             </ul>
         </nav>
         </header>
