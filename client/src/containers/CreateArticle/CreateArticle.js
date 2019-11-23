@@ -46,7 +46,6 @@ class ArticlePage extends Component {
                     <form>
                     <input type='text' placeholder='Article Title' name='title' className='title' onChange={this.formInput} />
                     <div className='textarea'>
-                        <textarea name='article' cols='20' onChange={this.formInput} ></textarea>
                     <FroalaEditor name='article' model={this.state.content} onModelChanhe={this.handleModelChange} />
                     </div>
                 <button className='btn-upload'>Publish</button>

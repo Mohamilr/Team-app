@@ -53,7 +53,7 @@ class Signin extends Component {
     return (
         <div>
          <Navbar />
-         <div className='form-container'>
+         <div className='signin-form-container'>
          <h2>Welcome back</h2>
             <form onSubmit={(e)=> {
                 e.preventDefault();

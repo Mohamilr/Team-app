@@ -67,15 +67,15 @@ class Signup extends Component {
             <div>
                 <Navbar />
                 <div className='form-container'>
-                    <h2>Register for free</h2>
+                    <h2 className='reg'>Register for free</h2>
                     <form onSubmit={(e) => {
                         e.preventDefault();
                         this.handleFormSubmit();
                         console.log(this.state.bodyValue)
                     }}>
                         <div>
-                            <input type='text' name='firstName' placeholder='Firstname' onChange={this.formInput} />
-                            <input type='text' name='lastName' placeholder='Lastname' onChange={this.formInput} />
+                            <input type='text' name='firstName' placeholder='First name' onChange={this.formInput} />
+                            <input type='text' name='lastName' placeholder='Last name' onChange={this.formInput} />
                         </div>
                         <div>
                             <input type='email' name='email' placeholder='User@mail.com' onChange={this.formInput} />

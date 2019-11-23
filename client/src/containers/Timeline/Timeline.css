@@ -13,7 +13,7 @@
 }
 
 .headers h4:hover {
-  color: green;
+  color: #2cc7a5;
 }
 
 .article-container {
@@ -22,23 +22,23 @@
 }
 
 .article-container::-webkit-scrollbar {
-  width: 5px;
+  width: 3px;
 }
 
 .article-container::-webkit-scrollbar-track {
   box-shadow: 1px 1px 2px #aaa;
-  border-radius: 10px blue;
+  border-radius: 10px;
 }
 
 .article-container::-webkit-scrollbar-thumb {
-  background-color: green;
+  background-color: #9af4d4;
   border-radius: 5px;
 }
 
 .articles {
   margin: 1em auto;
   width: 80%;
-  border: 2px solid blue;
+  border-radius: 5px;
   padding: 1em;
   box-shadow: 1px 1px 2px #aaa;
 }
@@ -46,14 +46,17 @@
 .article-properties {
   display: flex;
   justify-content: space-between;
+  padding-bottom: 5px;
+}
+
+.article-title {
+  color: #9af4d4;
 }
 
 article {
-  padding: 1em 0;
-}
-
-.by {
-  font-weight: bold;
+  color: #2cc7a5;
+  padding: 1em 20px;
+  border-left: 2px solid #3a4946;
 }
 
 /* gif style */
@@ -66,10 +69,25 @@ article {
   overflow-y: scroll
 }
 
+.gif-container::-webkit-scrollbar {
+  width: 3px;
+}
+
+.gif-container::-webkit-scrollbar-track {
+  box-shadow: 1px 1px 2px #aaa;
+  border-radius: 10px;
+}
+
+.gif-container::-webkit-scrollbar-thumb {
+  background-color: #9af4d4;
+  border-radius: 5px;
+}
+
 .gifs {
   max-width: 20em;
-  border: 2px solid pink;
+  border-radius: 5px;
   box-shadow: 1px 1px 2px #aaa;
+  padding: 2px;
 }
 
 .gif-image {
@@ -78,20 +96,10 @@ article {
   margin-bottom: 20px;
 }
 
-.gif-container::-webkit-scrollbar {
-  width: 5px;
+.gif-properties {
+  text-align: center;
+  padding: 0 0 20px;
 }
-
-.gif-container::-webkit-scrollbar-track {
-  box-shadow: 1px 1px 2px #aaa;
-  border-radius: 10px blue;
-}
-
-.gif-container::-webkit-scrollbar-thumb {
-  background-color: green;
-  border-radius: 5px;
-}
-
 
 
 @media (max-width: 720px) {

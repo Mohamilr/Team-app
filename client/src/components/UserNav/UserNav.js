@@ -7,13 +7,13 @@ const UserNav = () => {
         <div>
             <header>
         <nav className='user-nav'>
-            <Link to='/feeds' className='app-name'>Site name</Link>
+            <Link to='/feeds' className='app-name app'>Team App</Link>
             <ul>
                 <li><Link to='/feeds'>Timeline</Link></li>
                 <li><Link to='/article'>Post Article</Link></li>
                 <li><Link to='/gif'>Post Gif</Link></li>
                 <li><Link to='/posts'>My Posts</Link></li>
-                {/* <li><Link to='/profile'>Profile</Link></li> */}
+                <li><Link to='/'>Log Out</Link></li>
             </ul>
         </nav>
         </header>

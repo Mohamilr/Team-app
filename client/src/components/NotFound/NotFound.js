@@ -5,8 +5,9 @@ import './NotFound.css';
 const NotFound = () => {
     return(
         <main className='error-page'>
-            <h1>404</h1>
-            <Link to='/' >Go back to home page</Link>
+              <p className='back-link'>
+              <Link to='/' >Go back to home page</Link>
+              </p>
         </main>
     );
 };
