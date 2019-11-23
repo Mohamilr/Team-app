@@ -15,17 +15,17 @@
 
 .btn {
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 5px 10px ;
 }
 
 .update { 
-    background-color: greenyellow;
-    color: indigo;
-    border: 1px solid pink;
+    background-color: #9af4d4;
+    color: #3a4946;
+    border: 1px solid #2cc7a5;
 }
 
 .delete {
-    background-color: red;
-    color: indigo;
-    border: 1px solid pink;
+    background-color: #dc7e67;
+    color: #3a4946;
+    border: 1px solid #2cc7a5;
 }

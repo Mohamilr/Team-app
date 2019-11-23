@@ -10,13 +10,14 @@ class MyFeeds extends Component {
         super();
         this.state = {
             myFeeds: [],
+            myGifs : [],
             token: ''
         }
     }
 
     componentDidMount() {
         const token = localStorage.getItem('token')
-
+        // http://localhost:5000/api/v1/feed
         fetch(`${baseUrl}/feed`, {
             method: 'GET',
             headers: {
@@ -27,7 +28,8 @@ class MyFeeds extends Component {
             .then(res => res.json())
             .then((data) => {
                 this.setState({
-                    myFeeds: data.data,
+                    myFeeds: data.data.articles,
+                    myGifs: data.data.gifs,
                     token: token
                 })
                 console.log(this.state.myFeeds)
@@ -69,8 +71,10 @@ class MyFeeds extends Component {
 
 
     render() {
-        const { myFeeds } = this.state;
-        const id = parseInt(localStorage.getItem('id'))
+        const { myFeeds, myGifs } = this.state;
+
+        const id = 1
+        //  parseInt(localStorage.getItem('id'))
 
         return (
             <div className='container' >
@@ -105,7 +109,7 @@ class MyFeeds extends Component {
                     </div>
                     {/* gif area */}
                     <div className='gif-container'>
-                        {myFeeds.map((gifs, i) => {
+                        {myGifs.map((gifs, i) => {
                             if (gifs.gifauthorid === id) {
                                 // if (gifs.length === 0) {
                                 //     return (
@@ -116,7 +120,7 @@ class MyFeeds extends Component {
                                     return (
                                         <div className='gifs' key={i}>
                                             <img src={gifs.image} alt='' className='gif-image' />
-                                            <div className='article-properties'>
+                                            <div className='gif-properties'>
                                                 <div>{gifs.gifcreatedon}</div>
                                             </div>
                                             <div className='option'>

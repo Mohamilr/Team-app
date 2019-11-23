@@ -11,22 +11,24 @@
 
 .header {
   margin-bottom: 1em;
+  color: #2cc7a5;
 }
 
 .upload-gif {
   margin-top: 6em;  
-  border: 2px dotted green;
+  border: 2px dotted #9af4d4;
   border-radius: 5px;
 }
 
 .fa-plus-circle {
   font-size: 4em;
   margin: 1em;
+  color: #9af4d4;
 }
 
 .title {
   align-self: center;
-  border: 2px solid pink;
+  border: 2px solid #9af4d4;
   border-radius: 2px;
   padding: 10px;
   margin-bottom: 1.2em;
@@ -41,14 +43,15 @@
     padding: 10px 1em;
     margin: auto;
     width: 50%;
-    background-color: greenyellow;
+    color: #3a4946;
+    background-color: #9af4d4;
     border-radius: 5px;
 }
 
 .btn-upload {
-    background-color: greenyellow;
-    color: indigo;
-    border: 1px solid pink;
+    background-color: #9af4d4;
+    color: #3a4946;
+    border: 1px solid #2cc7a5;
     border-radius: 5px;
     margin: 2em;
     padding: 10px 20px;

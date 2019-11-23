@@ -8,8 +8,12 @@ form {
     margin: 3em 0;
 }
 
+.reg {
+    color: #2cc7a5;
+}
+
 .form-container input {
-    border: 2px solid pink;
+    border: 2px solid #9af4d4;
     border-radius: 2px;
     padding: 10px;
     margin-bottom: 1em;
@@ -26,15 +30,20 @@ form {
     width: 45%;
 }
 
+a {
+    text-decoration: none;
+    color: #3a4946
+}
+
 .info {
     width: 100%;
     margin-bottom: 1em;
 }
 
 .btn-reg {
-    color: blue;
-    background-color: green;
-    border: 2px solid pink;
+    color: #3a4946;
+    background-color:  #9af4d4;
+    border: 2px solid #2cc7a5;
     border-radius: 5px;
     padding: 10px;
     margin-top: 2em;
@@ -49,6 +58,7 @@ form {
     }
 
     .form-container div {
+
         display: flex;
         flex-direction: column;
     }

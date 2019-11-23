@@ -1,4 +1,5 @@
-.form-container {
+@import '../Signup/Signup.css';
+.signin-form-container {
     text-align: center;
     margin: 5em  auto;
     width: 50%;
@@ -8,8 +9,8 @@ form {
     margin: 4em 0;
 }
 
-.form-container .details {
-    border: 2px solid pink;
+.signin-form-container .details {
+    border: 2px solid #9af4d4;
     border-radius: 2px;
     padding: 10px;
     margin-bottom: 1.2em;
@@ -18,20 +19,8 @@ form {
     width: 70%;
 }
 
-.btn-reg {
-    color: blue;
-    background-color: green;
-    border: 2px solid pink;
-    border-radius: 5px;
-    padding: 10px;
-    margin-top: 2em;
-    height: 3em;
-    width: 70%;
-    font-size: 15px;  
-}
-
 @media (max-width: 720px){
-    .form-container {
+    .signin-form-container {
         text-align: center;
         margin: 5em  auto;
         width: 100%;

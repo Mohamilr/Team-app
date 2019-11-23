@@ -7,7 +7,8 @@ class Timeline extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            feeds: [],
+            articleFeeds: [],
+            gifFeeds: [],
         }
     }
 
@@ -27,17 +28,17 @@ class Timeline extends Component {
             .then(res => res.json())
             .then((data) => {
                 this.setState({
-                    feeds: data.data
+                    articleFeeds: data.data.articles,
+                    gifFeeds: data.data.gifs
                 })
-                console.log(this.state.feeds)
+              
             })
             .catch(e => console.log(e));
     }
 
 
-
     render() {
-        const { feeds } = this.state;
+        const { articleFeeds, gifFeeds } = this.state;
 
         return (
             <div className='container'>
@@ -47,11 +48,11 @@ class Timeline extends Component {
                         <h4>Articles</h4> | <h4>Gifs</h4>
                     </div>
                     <div className='article-container'>
-                        {feeds.map((articles, i) => {
+                        {articleFeeds.map((articles, i) => {
                             return (
                                 <div className='articles' key={i}>
                                     <div className='article-properties'>
-                                        <Link to='/'><h3>{articles.title}</h3></Link>
+                                        <h3 className='article-title'><Link to='/'>{articles.title}</Link></h3>
                                         <p>{articles.createdon}</p>
                                     </div>
                                     <article>
@@ -64,14 +65,13 @@ class Timeline extends Component {
                     </div>
                     {/* gif area */}
                     <div className='gif-container'>
-                        {feeds.map((gifs, i) => {
+                        {gifFeeds.map((gifs, i) => {
                             return (
 
                                 <div className='gifs' key={i}>
                                     <img src={gifs.image} alt='' className='gif-image' />
-                                    <div className='article-properties'>
-                                        <div><span className='by'>BY</span> <span>Mohammed Ibrahim</span></div>
-                                        <p>comment icon <span>1</span></p>
+                                    <div className='gif-properties'>
+                                    <div>{gifs.gifcreatedon}</div>
                                     </div>
                                 </div>
                             )
