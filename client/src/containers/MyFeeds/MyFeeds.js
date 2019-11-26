@@ -17,7 +17,7 @@ class MyFeeds extends Component {
 
     componentDidMount() {
         const token = localStorage.getItem('token')
-        // http://localhost:5000/api/v1/feed
+
         fetch(`${baseUrl}/feed`, {
             method: 'GET',
             headers: {
@@ -73,8 +73,7 @@ class MyFeeds extends Component {
     render() {
         const { myFeeds, myGifs } = this.state;
 
-        const id = 1
-        //  parseInt(localStorage.getItem('id'))
+        const id = parseInt(localStorage.getItem('id'))
 
         return (
             <div className='container' >
@@ -121,6 +120,7 @@ class MyFeeds extends Component {
                                         <div className='gifs' key={i}>
                                             <img src={gifs.image} alt='' className='gif-image' />
                                             <div className='gif-properties'>
+                                                <h3>{gifs.giftitle}</h3>
                                                 <div>{gifs.gifcreatedon}</div>
                                             </div>
                                             <div className='option'>

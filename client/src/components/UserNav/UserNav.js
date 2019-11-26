@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import './Usernav.css';
 
 const UserNav = () => {
@@ -9,10 +9,10 @@ const UserNav = () => {
         <nav className='user-nav'>
             <Link to='/feeds' className='app-name app'>Team App</Link>
             <ul>
-                <li><Link to='/feeds'>Timeline</Link></li>
-                <li><Link to='/article'>Post Article</Link></li>
-                <li><Link to='/gif'>Post Gif</Link></li>
-                <li><Link to='/posts'>My Posts</Link></li>
+                <li><NavLink activeClassName='active' to='/feeds'>Timeline</NavLink></li>
+                <li><NavLink activeClassName='active' to='/article'>Post Article</NavLink></li>
+                <li><NavLink activeClassName='active' to='/gif'>Post Gif</NavLink></li>
+                <li><NavLink activeClassName='active' to='/posts'>My Posts</NavLink></li>
                 <li><Link to='/'>Log Out</Link></li>
             </ul>
         </nav>

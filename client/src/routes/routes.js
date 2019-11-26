@@ -1,5 +1,5 @@
 import React , { Component } from 'react';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
+import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom'
 import LandingPage from '../Containers/LandingPage/LandingPage';
 import Signup from '../Containers/Signup/Signup';
 import Signin from '../Containers/Signin/Signin';
@@ -15,6 +15,7 @@ class Routes extends Component {
         return(
             <Router>
             <div>
+            <Switch>
              <Route exact path='/' component={LandingPage} />
              <Route path='/register' component={Signup} />
              <Route path='/login' component={Signin} />
@@ -24,6 +25,7 @@ class Routes extends Component {
              {/* <Route path='/profile' component={ProfilePage} /> */}
              <Route path='/feeds' component={Timeline} />
              <Route component={NotFound} />
+             </Switch>
             </div>
             </Router>
         );

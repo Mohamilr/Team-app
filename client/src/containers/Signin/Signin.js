@@ -42,7 +42,7 @@ class Signin extends Component {
            window.location = 'http://localhost:3000/login';
        }
        else{
-        window.location = 'http://localhost:3000/feeds';
+        this.props.history.push('/feeds')
        }
 
        localStorage.setItem('token', response.data.token);
@@ -54,7 +54,7 @@ class Signin extends Component {
         <div>
          <Navbar />
          <div className='signin-form-container'>
-         <h2>Welcome back</h2>
+         <h2 className='reg'>Welcome back</h2>
             <form onSubmit={(e)=> {
                 e.preventDefault();
                 this.handleFormSubmit();
