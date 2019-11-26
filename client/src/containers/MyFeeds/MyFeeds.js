@@ -35,13 +35,16 @@ class MyFeeds extends Component {
                 console.log(this.state.myFeeds)
                 
             })
-            .catch(e => console.log(e));
+            .catch(e => {
+                console.log(e)
+                return console.log('hello')
+        });
     }
 
 
     // delete article
     handleArticleDelete = (id) => {
-      fetch(`${baseUrl}/articles/${id}`, {
+       fetch(`${baseUrl}/articles/${id}`, {
           method: 'DELETE',
           headers: {
               'authorization': `bearer ${this.state.token}`,
@@ -50,7 +53,13 @@ class MyFeeds extends Component {
       })
       .then(res => res.json())
       .then(data => console.log(data))
-      .catch(e => console.log(e));
+      .catch(e => {
+        console.log(e)
+        return console.log('hello')
+      });
+
+    //   
+      window.location = 'http://localhost:3000/posts';
     }
 
 
@@ -66,6 +75,9 @@ class MyFeeds extends Component {
         .then(res => res.json())
         .then(data => console.log(data))
         .catch(e => console.log(e));
+        
+        // 
+        window.location = 'http://localhost:3000/posts';
       }
 
 
@@ -118,7 +130,7 @@ class MyFeeds extends Component {
                             
                                     return (
                                         <div className='gifs' key={i}>
-                                            <img src={gifs.image} alt='' className='gif-image' />
+                                            <img src={gifs.image} alt='gif' className='gif-image' onChange={(e) => {e.preventDefault();}} />
                                             <div className='gif-properties'>
                                                 <h3>{gifs.giftitle}</h3>
                                                 <div>{gifs.gifcreatedon}</div>

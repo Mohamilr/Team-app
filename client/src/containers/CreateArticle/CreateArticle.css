@@ -11,3 +11,9 @@
     font-size: 20px;
     width: 75%;
 }
+
+@media (max-width: 720px) {
+    .textarea{
+        width: 100%;
+    }
+}
