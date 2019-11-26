@@ -73,7 +73,7 @@ class Timeline extends Component {
                             return (
 
                                 <div className='gifs' key={i}>
-                                    <img src={gifs.image} alt='' className='gif-image' />
+                                    <img src={gifs.image} alt='gif' className='gif-image' />
                                     <div className='gif-properties'>
                                     <h3>{gifs.giftitle}</h3>
                                     <div>{gifs.gifcreatedon}</div>
