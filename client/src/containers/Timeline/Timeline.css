@@ -50,7 +50,7 @@
 }
 
 .article-title {
-  color: #9af4d4;
+  max-width: 20em;
 }
 
 article {
@@ -115,6 +115,10 @@ article {
   .article-properties {
     display: flex;
     flex-direction: column;
+  }
+
+  .article-title {
+    width: 100%;
   }
 
   /* gif style */

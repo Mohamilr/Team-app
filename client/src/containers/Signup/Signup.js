@@ -50,7 +50,7 @@ class Signup extends Component {
             window.location = 'http://localhost:3000/register';
         }
         else {
-            window.location = 'http://localhost:3000/feeds';
+            this.props.history.push('/feeds')
         }
         
         localStorage.setItem('token', response.data.token);

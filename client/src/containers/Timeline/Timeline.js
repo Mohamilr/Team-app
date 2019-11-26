@@ -52,11 +52,15 @@ class Timeline extends Component {
                             return (
                                 <div className='articles' key={i}>
                                     <div className='article-properties'>
-                                        <h3 className='article-title'><Link to='/'>{articles.title}</Link></h3>
+                                        <Link to='/'><h3 className='article-title'>{articles.title}</h3></Link>
                                         <p>{articles.createdon}</p>
                                     </div>
                                     <article>
-                                        {articles.article}
+                                        {articles.article
+                        }
+                        {/* .length > 200 ?
+                                            `${articles.article.substr(0, 200)}...`
+                                        } */}
                                     </article>
                                 </div>
                             )
@@ -71,6 +75,7 @@ class Timeline extends Component {
                                 <div className='gifs' key={i}>
                                     <img src={gifs.image} alt='' className='gif-image' />
                                     <div className='gif-properties'>
+                                    <h3>{gifs.giftitle}</h3>
                                     <div>{gifs.gifcreatedon}</div>
                                     </div>
                                 </div>

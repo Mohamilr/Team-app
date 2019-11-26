@@ -1,8 +1,7 @@
 @import '../Timeline/Timeline.css';
 
 .options {
-    text-align: center;
-    width: 20em;
+    width: 15em;
     margin: 20px auto;
     display: flex;
     justify-content: space-between;
@@ -28,4 +27,11 @@
     background-color: #dc7e67;
     color: #3a4946;
     border: 1px solid #2cc7a5;
+}
+
+@media (max-width: 720px) {
+    .options {
+        width: 100%;
+    }
+    
 }
