@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
-// import UserNav from '../../components/UserNav/UserNav';
 import './ViewArticle.css';
 
 
@@ -33,10 +32,7 @@ class ViewArticle extends Component {
             .then((data) => {
                 this.setState({
                     comments: data.data.comment
-                    // myGifs: data.data.gifs,
-                    // token: token
                 })
-                // console.log(this.state.myFeeds)
                 console.log(data.data.comment)
             })
             .catch(e => {
@@ -79,7 +75,7 @@ class ViewArticle extends Component {
     render() {
         const { comments } = this.state;
         return (
-            <div className='view-article-container'>
+            <div className='view-container'>
                 <div className='article'>
                     {/* <Link to='/feeds'>Back to feeds</Link> */}
                     <h2>Article Title</h2>

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import Routes from './routes/routes';
-// import ViewArticle from './Containers/ViewArticle/ViewArticle';
+// import Routes from './routes/routes';
+import ViewGif from './Containers/ViewGif/ViewGif';
 
 class App extends Component {
   render () {
     return (
-      <Routes />
-      // <ViewArticle />
+      // <Routes />
+      <ViewGif />
     );
   }
 }
