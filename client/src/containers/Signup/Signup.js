@@ -40,13 +40,17 @@ class Signup extends Component {
                 'Content-Type': 'application/json'
             }
         })
-            .then(response => response.json())
+            .then(res => res.json())
             .catch(e => {
+               return console.log('hello')
+
                 console.log(e)
+
             })
 
         console.log(response)
         if (response.status === 'error') {
+            
             window.location = 'http://localhost:3000/register';
         }
         else {
