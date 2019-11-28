@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { NotificationManager } from 'react-notifications';
 import UserNav from '../../components/UserNav/UserNav';
 import './MyFeeds.css';
 
+// loader
+import Loader from '../../components/Loader';
 const baseUrl = 'https://team-work-api.herokuapp.com/api/v1';
 
 class MyFeeds extends Component {
     constructor() {
         super();
         this.state = {
+            loading: true,
             myFeeds: [],
             myGifs : [],
             token: ''
@@ -17,6 +21,10 @@ class MyFeeds extends Component {
 
     componentDidMount() {
         const token = localStorage.getItem('token')
+
+        if(!token) {
+            window.location = 'http://localhost:3000/login';
+          }
 
         fetch(`${baseUrl}/feed`, {
             method: 'GET',
@@ -28,6 +36,7 @@ class MyFeeds extends Component {
             .then(res => res.json())
             .then((data) => {
                 this.setState({
+                    loading: false,
                     myFeeds: data.data.articles,
                     myGifs: data.data.gifs,
                     token: token
@@ -37,7 +46,7 @@ class MyFeeds extends Component {
             })
             .catch(e => {
                 console.log(e)
-                return console.log('hello')
+                return NotificationManager.error('check your connection', 'Connection error!', 3000);
         });
     }
 
@@ -52,14 +61,18 @@ class MyFeeds extends Component {
           }
       })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => {
+        console.log(data)
+        if(data.status === 'success') {
+            NotificationManager.success('Article deleted successfully', 'Successful!', 5000); 
+            window.location = 'http://localhost:3000/posts';
+        }
+      })
       .catch(e => {
         console.log(e)
-        return console.log('hello')
+        return NotificationManager.error('check your connection', 'Connection error!', 3000);
       });
 
-    //   
-      window.location = 'http://localhost:3000/posts';
     }
 
 
@@ -73,19 +86,26 @@ class MyFeeds extends Component {
             }
         })
         .then(res => res.json())
-        .then(data => console.log(data))
-        .catch(e => console.log(e));
+        .then(data => {
+            console.log(data)
+            if(data.status === 'success') {
+                NotificationManager.success('Gif deleted successfully', 'Successful!', 5000); 
+                window.location = 'http://localhost:3000/posts';
+            }
+        })
+        .catch(e => {
+            console.log(e)
+            return NotificationManager.error('check your connection', 'Connection error!', 3000);
+        });
         
-        // 
-        window.location = 'http://localhost:3000/posts';
       }
 
 
 
     render() {
-        const { myFeeds, myGifs } = this.state;
+        const { myFeeds, myGifs, loading } = this.state;
 
-        const id = parseInt(localStorage.getItem('id'))
+        // const id = parseInt(localStorage.getItem('id'))
 
         return (
             <div className='container' >
@@ -95,8 +115,9 @@ class MyFeeds extends Component {
                         <h4>Articles</h4> | <h4>Gifs</h4>
                     </div>
                     <div className='article-container'>
-                        {myFeeds.map((articles, i) => {
-                            if (articles.authorid === id) {
+                        {loading ? <Loader /> : myFeeds === null ? <h1>There are no feeds</h1> :
+                        myFeeds.map((articles, i) => {
+                            // if (articles.authorid === id) {
                                 return (
                                     <div className='articles' key={i}>
                                         <div className='article-properties'>
@@ -115,13 +136,13 @@ class MyFeeds extends Component {
                                         </div>
                                     </div>
                                 );
-                            }
+                            // }
                         })}
                     </div>
                     {/* gif area */}
                     <div className='gif-container'>
                         {myGifs.map((gifs, i) => {
-                            if (gifs.gifauthorid === id) {
+                            // if (gifs.gifauthorid === id) {
                                 // if (gifs.length === 0) {
                                 //     return (
                                 //         <h1>NO gif available</h1>
@@ -144,7 +165,7 @@ class MyFeeds extends Component {
                                         </div>
                                     );
 
-                            }
+                            // }
                         })}
 
                     </div>
@@ -152,7 +173,6 @@ class MyFeeds extends Component {
             </div>
         );
     }
-
 };
 
 
