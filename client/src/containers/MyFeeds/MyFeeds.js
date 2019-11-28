@@ -105,7 +105,7 @@ class MyFeeds extends Component {
     render() {
         const { myFeeds, myGifs, loading } = this.state;
 
-        // const id = parseInt(localStorage.getItem('id'))
+        const id = parseInt(localStorage.getItem('id'))
 
         return (
             <div className='container' >
@@ -117,7 +117,7 @@ class MyFeeds extends Component {
                     <div className='article-container'>
                         {loading ? <Loader /> : myFeeds === null ? <h1>There are no feeds</h1> :
                         myFeeds.map((articles, i) => {
-                            // if (articles.authorid === id) {
+                            if (articles.authorid === id) {
                                 return (
                                     <div className='articles' key={i}>
                                         <div className='article-properties'>
@@ -136,13 +136,13 @@ class MyFeeds extends Component {
                                         </div>
                                     </div>
                                 );
-                            // }
+                            }
                         })}
                     </div>
                     {/* gif area */}
                     <div className='gif-container'>
                         {myGifs.map((gifs, i) => {
-                            // if (gifs.gifauthorid === id) {
+                            if (gifs.gifauthorid === id) {
                                 // if (gifs.length === 0) {
                                 //     return (
                                 //         <h1>NO gif available</h1>
@@ -165,7 +165,7 @@ class MyFeeds extends Component {
                                         </div>
                                     );
 
-                            // }
+                            }
                         })}
 
                     </div>
