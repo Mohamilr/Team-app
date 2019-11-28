@@ -1,5 +1,7 @@
 import React , { Component } from 'react';
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { NotificationContainer } from 'react-notifications'; 
+import 'react-notifications/lib/notifications.css';
 import LandingPage from '../Containers/LandingPage/LandingPage';
 import Signup from '../Containers/Signup/Signup';
 import Signin from '../Containers/Signin/Signin';
@@ -26,6 +28,7 @@ class Routes extends Component {
              <Route path='/feeds' component={Timeline} />
              <Route component={NotFound} />
              </Switch>
+             <NotificationContainer />
             </div>
             </Router>
         );

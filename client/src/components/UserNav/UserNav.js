@@ -13,7 +13,7 @@ const UserNav = () => {
                 <li><NavLink activeClassName='active' to='/article'>Post Article</NavLink></li>
                 <li><NavLink activeClassName='active' to='/gif'>Post Gif</NavLink></li>
                 <li><NavLink activeClassName='active' to='/posts'>My Posts</NavLink></li>
-                <li><Link to='/'>Log Out</Link></li>
+                <li onClick={() => {localStorage.removeItem('token'); localStorage.removeItem('id')}}><Link to='/'>Log Out</Link></li>
             </ul>
         </nav>
         </header>

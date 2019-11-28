@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { NotificationManager } from 'react-notifications';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 import './Signin.css';
@@ -36,12 +37,18 @@ class Signin extends Component {
        .then(res => res.json())
        .catch(e => console.log(e));
 
-       console.log(response);
-
-       if(response.status === 'error'){
-           window.location = 'http://localhost:3000/login';
+       // notifications
+       if(!response) {
+           return NotificationManager.error('check your connection', 'Connection error!', 3000);
+       }
+       if(response.error === 'email does not exist, please sign up'){
+        return NotificationManager.error('user does not exist, please sign up', 'Error!', 3000);
+       }
+       else if(response.error === 'all fields are required') {
+        return NotificationManager.error('all fields are required', 'Input error!', 3000);
        }
        else{
+        NotificationManager.success('log in successful', 'Successful!', 3000);
         this.props.history.push('/feeds')
        }
 
