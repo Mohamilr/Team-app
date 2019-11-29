@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/Team-app/static/css/main.0089e43e.chunk.css",
-    "main.js": "/Team-app/static/js/main.0b5e2422.chunk.js",
-    "main.js.map": "/Team-app/static/js/main.0b5e2422.chunk.js.map",
-    "runtime~main.js": "/Team-app/static/js/runtime~main.c6726aa5.js",
-    "runtime~main.js.map": "/Team-app/static/js/runtime~main.c6726aa5.js.map",
-    "static/css/2.3de123e6.chunk.css": "/Team-app/static/css/2.3de123e6.chunk.css",
-    "static/js/2.674dc112.chunk.js": "/Team-app/static/js/2.674dc112.chunk.js",
-    "static/js/2.674dc112.chunk.js.map": "/Team-app/static/js/2.674dc112.chunk.js.map",
-    "index.html": "/Team-app/index.html",
-    "precache-manifest.295ae05822f0234c06835c2bf52bf85d.js": "/Team-app/precache-manifest.295ae05822f0234c06835c2bf52bf85d.js",
-    "service-worker.js": "/Team-app/service-worker.js",
-    "static/css/2.3de123e6.chunk.css.map": "/Team-app/static/css/2.3de123e6.chunk.css.map",
-    "static/css/main.0089e43e.chunk.css.map": "/Team-app/static/css/main.0089e43e.chunk.css.map",
-    "static/media/NotFound.css": "/Team-app/static/media/404.41e2ebe7.jpg",
-    "static/media/loader.gif": "/Team-app/static/media/loader.e8453471.gif",
-    "static/media/notifications.css": "/Team-app/static/media/notification.c0d3c94c.eot"
+    "main.css": "/static/css/main.20d982b5.chunk.css",
+    "main.js": "/static/js/main.3fc25498.chunk.js",
+    "main.js.map": "/static/js/main.3fc25498.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.be1a776c.js",
+    "runtime~main.js.map": "/static/js/runtime~main.be1a776c.js.map",
+    "static/css/2.5f095bf2.chunk.css": "/static/css/2.5f095bf2.chunk.css",
+    "static/js/2.674dc112.chunk.js": "/static/js/2.674dc112.chunk.js",
+    "static/js/2.674dc112.chunk.js.map": "/static/js/2.674dc112.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.61c86d4b1614eaf3d9ccc797926c84a6.js": "/precache-manifest.61c86d4b1614eaf3d9ccc797926c84a6.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.5f095bf2.chunk.css.map": "/static/css/2.5f095bf2.chunk.css.map",
+    "static/css/main.20d982b5.chunk.css.map": "/static/css/main.20d982b5.chunk.css.map",
+    "static/media/NotFound.css": "/static/media/404.41e2ebe7.jpg",
+    "static/media/loader.gif": "/static/media/loader.e8453471.gif",
+    "static/media/notifications.css": "/static/media/notification.c0d3c94c.eot"
   }
 }
