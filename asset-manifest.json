@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/Mohamilr/Team-app/static/css/main.6d8d1e9e.chunk.css",
-    "main.js": "/Mohamilr/Team-app/static/js/main.aa8a2435.chunk.js",
-    "main.js.map": "/Mohamilr/Team-app/static/js/main.aa8a2435.chunk.js.map",
-    "runtime~main.js": "/Mohamilr/Team-app/static/js/runtime~main.c53e534d.js",
-    "runtime~main.js.map": "/Mohamilr/Team-app/static/js/runtime~main.c53e534d.js.map",
-    "static/css/2.28e5e1ed.chunk.css": "/Mohamilr/Team-app/static/css/2.28e5e1ed.chunk.css",
-    "static/js/2.674dc112.chunk.js": "/Mohamilr/Team-app/static/js/2.674dc112.chunk.js",
-    "static/js/2.674dc112.chunk.js.map": "/Mohamilr/Team-app/static/js/2.674dc112.chunk.js.map",
-    "index.html": "/Mohamilr/Team-app/index.html",
-    "precache-manifest.179bb849e6b1f9ab3f5620f826dbf595.js": "/Mohamilr/Team-app/precache-manifest.179bb849e6b1f9ab3f5620f826dbf595.js",
-    "service-worker.js": "/Mohamilr/Team-app/service-worker.js",
-    "static/css/2.28e5e1ed.chunk.css.map": "/Mohamilr/Team-app/static/css/2.28e5e1ed.chunk.css.map",
-    "static/css/main.6d8d1e9e.chunk.css.map": "/Mohamilr/Team-app/static/css/main.6d8d1e9e.chunk.css.map",
-    "static/media/NotFound.css": "/Mohamilr/Team-app/static/media/404.41e2ebe7.jpg",
-    "static/media/loader.gif": "/Mohamilr/Team-app/static/media/loader.e8453471.gif",
-    "static/media/notifications.css": "/Mohamilr/Team-app/static/media/notification.c0d3c94c.eot"
+    "main.css": "/Team-app/static/css/main.0089e43e.chunk.css",
+    "main.js": "/Team-app/static/js/main.0b5e2422.chunk.js",
+    "main.js.map": "/Team-app/static/js/main.0b5e2422.chunk.js.map",
+    "runtime~main.js": "/Team-app/static/js/runtime~main.c6726aa5.js",
+    "runtime~main.js.map": "/Team-app/static/js/runtime~main.c6726aa5.js.map",
+    "static/css/2.3de123e6.chunk.css": "/Team-app/static/css/2.3de123e6.chunk.css",
+    "static/js/2.674dc112.chunk.js": "/Team-app/static/js/2.674dc112.chunk.js",
+    "static/js/2.674dc112.chunk.js.map": "/Team-app/static/js/2.674dc112.chunk.js.map",
+    "index.html": "/Team-app/index.html",
+    "precache-manifest.295ae05822f0234c06835c2bf52bf85d.js": "/Team-app/precache-manifest.295ae05822f0234c06835c2bf52bf85d.js",
+    "service-worker.js": "/Team-app/service-worker.js",
+    "static/css/2.3de123e6.chunk.css.map": "/Team-app/static/css/2.3de123e6.chunk.css.map",
+    "static/css/main.0089e43e.chunk.css.map": "/Team-app/static/css/main.0089e43e.chunk.css.map",
+    "static/media/NotFound.css": "/Team-app/static/media/404.41e2ebe7.jpg",
+    "static/media/loader.gif": "/Team-app/static/media/loader.e8453471.gif",
+    "static/media/notifications.css": "/Team-app/static/media/notification.c0d3c94c.eot"
   }
 }
