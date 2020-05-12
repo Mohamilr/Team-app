@@ -10,10 +10,10 @@ import 'froala-editor/css/froala_editor.pkgd.min.css';
 // Require Font Awesome.
 // import 'font-awesome/css/font-awesome.css';
 
-
 import UserNav from '../../components/UserNav/UserNav';
 
 import './CreateArticle.css';
+// new FroalaEditor('#textarea')
 
 class ArticlePage extends Component {
     constructor () {
@@ -46,6 +46,7 @@ class ArticlePage extends Component {
                     <form>
                     <input type='text' placeholder='Article Title' name='title' className='title' onChange={this.formInput} />
                     <div className='textarea'>
+                        {/* <textarea id='textarea'></textarea> */}
                     <FroalaEditor name='article' model={this.state.content} onModelChanhe={this.handleModelChange} />
                     </div>
                 <button className='btn-upload'>Publish</button>
