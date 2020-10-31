@@ -34,3 +34,16 @@ a:hover{
 .active {
   border-bottom: 2px solid #3a4946;
 }
+
+@media (max-width: 720px) {
+  .sub-nav {
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 2.5em;
+    top: 2.5em;
+    background-color: #9af4d4;
+    width: 100%;
+  }
+  
+}
