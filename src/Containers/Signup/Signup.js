@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { NotificationManager } from "react-notifications";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
-
+import { Input } from '../../shared/FormTags';
 import "./Signup.css";
 
 const Signup = () => {
@@ -93,13 +92,13 @@ const Signup = () => {
           }}
         >
           <div>
-            <input
+            <Input
               type="text"
               name="firstName"
               placeholder="First name"
               onChange={(e) => formInput(e, 'firstname')}
             />
-            <input
+            <Input
               type="text"
               name="lastName"
               placeholder="Last name"
@@ -107,20 +106,20 @@ const Signup = () => {
             />
           </div>
           <div>
-            <input
+            <Input
               type="email"
               name="email"
               placeholder="User@mail.com"
               onChange={(e) => formInput(e, 'email')}
             />
-            <input
+            <Input
               type="password"
               name="password"
               placeholder="******"
               onChange={(e) => formInput(e, 'password')}
             />
           </div>
-          <input
+          <Input
             type="text"
             name="gender"
             placeholder="Gender"
@@ -128,7 +127,7 @@ const Signup = () => {
             onChange={(e) => formInput(e, 'gender')}
           />
           <br />
-          <input
+          <Input
             type="text"
             name="jobRole"
             placeholder="Jobrole"
@@ -136,7 +135,7 @@ const Signup = () => {
             onChange={(e) => formInput(e, 'jobrole')}
           />
           <br />
-          <input
+          <Input
             type="text"
             name="department"
             placeholder="Department"
@@ -144,7 +143,7 @@ const Signup = () => {
             onChange={(e) => formInput(e, 'department')}
           />
           <br />
-          <input
+          <Input
             type="text"
             name="address"
             placeholder="Address"

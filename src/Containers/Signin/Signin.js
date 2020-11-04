@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { NotificationManager } from "react-notifications";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
+import { Input } from '../../shared/FormTags';
 import "./Signin.css";
 
 const Signin = () => {
@@ -52,7 +52,7 @@ const Signin = () => {
             handleFormSubmit();
           }}
         >
-          <input
+          <Input
             type="email"
             placeholder="User@mail.com"
             name="email"
@@ -60,7 +60,7 @@ const Signin = () => {
             onChange={(e) => handleEmail(e)}
           />
           <br />
-          <input
+          <Input
             type="password"
             placeholder="******"
             name="password"
