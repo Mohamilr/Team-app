@@ -1,20 +1,20 @@
-import React , { Component } from 'react';
+import React , { lazy, Suspense } from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import { NotificationContainer } from 'react-notifications'; 
+import { NotificationContainer } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
-import LandingPage from '../Containers/LandingPage/LandingPage';
-import Signup from '../Containers/Signup/Signup';
-import Signin from '../Containers/Signin/Signin';
-import CreateArticle from '../Containers/CreateArticle/CreateArticle';
-import GifUpload from '../Containers/GifUpload/GifUpload';
-import MyFeeds from '../Containers/MyFeeds/MyFeeds';
+const LandingPage = lazy(() => import('../Containers/LandingPage/LandingPage'));
+const Signup = lazy(() => import('../Containers/Signup/Signup'));
+const Signin = lazy(() => import('../Containers/Signin/Signin')) ;
+const CreateArticle = lazy(() => import('../Containers/CreateArticle/CreateArticle'));
+const GifUpload = lazy(() => import('../Containers/GifUpload/GifUpload'));
+const MyFeeds = lazy(() => import('../Containers/MyFeeds/MyFeeds')) ;
 // import ProfilePage from '../Containers/ProfilePage/ProfilePage';
-import Timeline from '../Containers/Timeline/Timeline';
-import NotFound from '../components/NotFound/NotFound';
+const Timeline = lazy(() => import('../Containers/Timeline/Timeline'));
+const NotFound = lazy(() => import('../components/NotFound/NotFound'));
 
-class Routes extends Component {
-    render () {
+const Routes = () => {
         return(
+            <Suspense fallback='loading'>
             <Router>
             <div>
             <Switch>
@@ -31,8 +31,8 @@ class Routes extends Component {
              <NotificationContainer />
             </div>
             </Router>
+            </Suspense>
         );
-    }
 }
 
 export default Routes;

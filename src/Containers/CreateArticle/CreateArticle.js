@@ -52,7 +52,7 @@ class ArticlePage extends Component {
                 <button className='btn-upload'>Publish</button>
                 </form>
                 </div>
-                
+
             </div>
         );
     }
