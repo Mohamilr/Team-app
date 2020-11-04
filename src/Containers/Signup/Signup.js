@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
-import { Input } from '../../shared/FormTags';
+import { Input } from "../../shared/FormTags";
+// api call
+import Registration from "../../ApiCalls/Registration";
 import "./Signup.css";
 
 const Signup = () => {
@@ -45,39 +47,21 @@ const Signup = () => {
       default:
         return type;
     }
-
   };
 
   const bodyValue = {
-      firstName,
-      lastName,
-      email,
-      password,
-      gender,
-      jobRole,
-      department,
-      address
-  }
+    firstName,
+    lastName,
+    email,
+    password,
+    gender,
+    jobRole,
+    department,
+    address,
+  };
 
-  const handleFormSubmit = async () => {
-    try {
-      const response = await fetch(
-        "https://team-work-api.herokuapp.com/api/v1/auth/create-user",
-        {
-          method: "POST",
-            body: JSON.stringify({ ...bodyValue }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      const res = await response.json()
-
-      console.log(res)
-    } catch (e) {
-      console.error(e);
-    }
+  const handleFormSubmit = () => {
+    Registration("POST", {...bodyValue}, "create-user");
   };
 
   return (
@@ -96,13 +80,13 @@ const Signup = () => {
               type="text"
               name="firstName"
               placeholder="First name"
-              onChange={(e) => formInput(e, 'firstname')}
+              onChange={(e) => formInput(e, "firstname")}
             />
             <Input
               type="text"
               name="lastName"
               placeholder="Last name"
-              onChange={(e) => formInput(e, 'lastname')}
+              onChange={(e) => formInput(e, "lastname")}
             />
           </div>
           <div>
@@ -110,13 +94,13 @@ const Signup = () => {
               type="email"
               name="email"
               placeholder="User@mail.com"
-              onChange={(e) => formInput(e, 'email')}
+              onChange={(e) => formInput(e, "email")}
             />
             <Input
               type="password"
               name="password"
               placeholder="******"
-              onChange={(e) => formInput(e, 'password')}
+              onChange={(e) => formInput(e, "password")}
             />
           </div>
           <Input
@@ -124,7 +108,7 @@ const Signup = () => {
             name="gender"
             placeholder="Gender"
             className="info"
-            onChange={(e) => formInput(e, 'gender')}
+            onChange={(e) => formInput(e, "gender")}
           />
           <br />
           <Input
@@ -132,7 +116,7 @@ const Signup = () => {
             name="jobRole"
             placeholder="Jobrole"
             className="info"
-            onChange={(e) => formInput(e, 'jobrole')}
+            onChange={(e) => formInput(e, "jobrole")}
           />
           <br />
           <Input
@@ -140,7 +124,7 @@ const Signup = () => {
             name="department"
             placeholder="Department"
             className="info"
-            onChange={(e) => formInput(e, 'department')}
+            onChange={(e) => formInput(e, "department")}
           />
           <br />
           <Input
@@ -148,7 +132,7 @@ const Signup = () => {
             name="address"
             placeholder="Address"
             className="info"
-            onChange={(e) => formInput(e, 'address')}
+            onChange={(e) => formInput(e, "address")}
           />
           <br />
           {loading ? (

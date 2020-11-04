@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://mohamilr.github.io/Team-app/",
   "dependencies": {
+    "axios": "^0.21.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-froala-wysiwyg": "^3.0.6",

@@ -2,43 +2,30 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
-import { Input } from '../../shared/FormTags';
+import { Input } from "../../shared/FormTags";
+// api call
+import Registration from "../../ApiCalls/Registration";
 import "./Signin.css";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
+  const formInput = (e, type) => {
+    switch (type) {
+      case "email":
+        setEmail(e.target.value);
+        break;
+      case "password":
+        setPassword(e.target.value);
+        break;
+      default:
+        return type;
+    }
   };
 
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleFormSubmit = async () => {
-      try {
-        const response = await fetch(
-            "https://team-work-api.herokuapp.com/api/v1/auth/signin",
-            {
-              method: "POST",
-              body: JSON.stringify({
-                email,
-                password,
-              }),
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          );
-            const res = await response.json();
-          console.log(res)
-
-      }
-      catch (e) {
-          console.error(e)
-      }
+  const handleFormSubmit = () => {
+    Registration("POST", { email, password }, "signin");
   };
 
   return (
@@ -57,7 +44,7 @@ const Signin = () => {
             placeholder="User@mail.com"
             name="email"
             className="details"
-            onChange={(e) => handleEmail(e)}
+            onChange={(e) => formInput(e, "email")}
           />
           <br />
           <Input
@@ -65,7 +52,7 @@ const Signin = () => {
             placeholder="******"
             name="password"
             className="details"
-            onChange={(e) => handlePassword(e)}
+            onChange={(e) => formInput(e, "password")}
           />
           <br />
           <button className="btn-reg">Log in</button>
