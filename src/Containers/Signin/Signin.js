@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import { Input } from "../../shared/FormTags";
 // api call
-import Registration from "../../ApiCalls/Registration";
+import ApiCall from "../../ApiCalls/ApiCall";
 import "./Signin.css";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
   const formInput = (e, type) => {
     switch (type) {
@@ -24,9 +25,31 @@ const Signin = () => {
     }
   };
 
-  const handleFormSubmit = () => {
-    Registration("POST", { email, password }, "signin");
+  // form data
+  const body = {
+    email,
+    password,
   };
+
+  const handleFormSubmit = async () => {
+    try {
+      const response = await ApiCall.post("auth/signin", body);
+      const { data: { data } }= response;
+
+      ApiCall.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('id', data.authorId);
+
+      console.log(data.data);
+      setRedirect(true);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  if (redirect) {
+    return <Redirect to="/feeds" />;
+  }
 
   return (
     <div>

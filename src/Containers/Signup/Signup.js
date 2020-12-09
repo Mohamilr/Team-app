@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import { Input } from "../../shared/FormTags";
 // api call
-import Registration from "../../ApiCalls/Registration";
+import ApiCall from "../../ApiCalls/ApiCall";
 import "./Signup.css";
 
 const Signup = () => {
@@ -16,7 +16,7 @@ const Signup = () => {
   const [jobRole, setJobRole] = useState("");
   const [department, setDepartment] = useState("");
   const [address, setAddress] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [redirect, setRedirect] = useState(false);
 
   const formInput = (e, type) => {
     switch (type) {
@@ -60,10 +60,26 @@ const Signup = () => {
     address,
   };
 
-  const handleFormSubmit = () => {
-    Registration("POST", {...bodyValue}, "create-user");
+  const handleFormSubmit = async () => {
+    try {
+      const response = await ApiCall.post("auth/signin", bodyValue);
+      const { data: { data } }= response;
+
+      ApiCall.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('id', data.authorId);
+
+      console.log(data.data);
+      setRedirect(true);
+    } catch (e) {
+      console.error(e);
+    }
+
   };
 
+  if (redirect) {
+    return <Redirect to='/feeds'/>
+  }
   return (
     <div>
       <Navbar />
@@ -135,11 +151,11 @@ const Signup = () => {
             onChange={(e) => formInput(e, "address")}
           />
           <br />
-          {loading ? (
+          {/* {loading ? (
             <button className="btn-reg">loading ...</button>
-          ) : (
+          ) : ( */}
             <button className="btn-reg">Register</button>
-          )}
+          {/* )} */}
         </form>
         <p>
           Already have an accout? please <Link to="/login">login</Link>
