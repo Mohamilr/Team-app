@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import { Input } from "../../shared/FormTags";
-// api call
-import ApiCall from "../../ApiCalls/ApiCall";
+// action
+import { LoginAction } from "../../actions/RegisterAction";
 import "./Signin.css";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [redirect, setRedirect] = useState(false);
+  const redirect = useSelector((state) => state.login);
+  //
+  const dispatch = useDispatch();
 
   const formInput = (e, type) => {
     switch (type) {
@@ -31,20 +34,8 @@ const Signin = () => {
     password,
   };
 
-  const handleFormSubmit = async () => {
-    try {
-      const response = await ApiCall.post("auth/signin", body);
-      const { data: { data } }= response;
-
-      ApiCall.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('id', data.authorId);
-
-      console.log(data.data);
-      setRedirect(true);
-    } catch (e) {
-      console.error(e);
-    }
+  const handleFormSubmit = () => {
+    dispatch(LoginAction(body));
   };
 
   if (redirect) {
