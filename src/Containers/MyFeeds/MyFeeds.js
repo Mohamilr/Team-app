@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { NotificationManager } from "react-notifications";
+import { MYFeeds as MyFeed } from "../../actions/FeedsAction";
 import UserNav from "../../components/UserNav/UserNav";
 import ApiCall from "../../ApiCalls/ApiCall";
 import "./MyFeeds.css";
@@ -9,42 +11,15 @@ import "./MyFeeds.css";
 import Loader from "../../components/Loader";
 
 const MyFeeds = () => {
-  const [myFeeds, setMyFeeds] = useState([]);
-  const [myGifs, setMyGifs] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const articles = useSelector((state) => state.MyArticles);
+  const gifs = useSelector((state) => state.MyGifs);
+  const loading = useSelector((state) => state.FeedsLoading);
   const [refresh, setRefresh] = useState(false);
-  const id = parseInt(localStorage.getItem("id"));
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    (async function () {
-      try {
-        const response = await ApiCall.get("/feed");
-        const {
-          data: { data },
-        } = response;
-
-        const articles = [];
-        const gifs = [];
-
-        data.articles.map((article) => {
-          if (article.authorid === id) {
-            articles.push(article);
-          }
-        });
-
-        data.gifs.map((gif) => {
-          if (gif.authorid === id) {
-            articles.push(gif);
-          }
-        });
-        setMyFeeds(articles);
-        setMyGifs(gifs);
-        setLoading(false);
-        console.log(data);
-      } catch (e) {
-        console.error(e);
-      }
-    })();
+    dispatch(MyFeed());
   }, [refresh]);
 
   // delete article
@@ -69,22 +44,22 @@ const MyFeeds = () => {
           {loading ? (
             <Loader />
           ) : (
-            myFeeds.map((articles, i) => (
+            articles.map((article, i) => (
               <div className="articles" key={i}>
                 <div className="article-properties">
                   <Link to="/">
-                    <h3>{articles.title}</h3>
+                    <h3>{article.title}</h3>
                   </Link>
-                  <p>{articles.createdon}</p>
+                  <p>{article.createdon}</p>
                 </div>
-                <article>{articles.article}</article>
+                <article>{article.article}</article>
                 <div className="options">
                   <button className="btn update">Edit</button>
                   <button
                     className="btn delete"
                     onClick={(e) => {
                       e.preventDefault();
-                      handleDelete("articles", articles.articleid);
+                      handleDelete("articles", article.articleid);
                     }}
                   >
                     Delete
@@ -96,26 +71,30 @@ const MyFeeds = () => {
         </div>
         {/* gif area */}
         <div className="gif-container">
-          {myGifs.map((gifs, i) => (
-            <div className="gifs" key={i}>
-              <img src={gifs.image} alt="gif" className="gif-image" />
-              <div className="gif-properties">
-                <h3>{gifs.giftitle}</h3>
-                <div>{gifs.gifcreatedon}</div>
+          {gifs ? (
+            gifs.map((gif, i) => (
+              <div className="gifs" key={i}>
+                <img src={gif.image} alt="gif" className="gif-image" />
+                <div className="gif-properties">
+                  <h3>{gif.giftitle}</h3>
+                  <div>{gif.gifcreatedon}</div>
+                </div>
+                <div className="option">
+                  <button
+                    className="btn delete"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleDelete("gifs", gif.gifid);
+                    }}
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
-              <div className="option">
-                <button
-                  className="btn delete"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleDelete("gifs", gifs.gifid);
-                  }}
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <h1>no gifs</h1>
+          )}
         </div>
       </div>
     </div>
