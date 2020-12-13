@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { NotificationManager } from "react-notifications";
 import { MYFeeds as MyFeed } from "../../actions/FeedsAction";
+import { REFRESH } from '../../actions/ActionTypes';
 import UserNav from "../../components/UserNav/UserNav";
 import ApiCall from "../../ApiCalls/ApiCall";
 import "./MyFeeds.css";
@@ -14,10 +15,10 @@ const MyFeeds = () => {
   const articles = useSelector((state) => state.MyArticles);
   const gifs = useSelector((state) => state.MyGifs);
   const loading = useSelector((state) => state.FeedsLoading);
-  const [refresh, setRefresh] = useState(false);
+  const refresh = useSelector((state) => state.refresh);
 
   const dispatch = useDispatch();
-
+console.log(gifs)
   useEffect(() => {
     dispatch(MyFeed());
   }, [refresh]);
@@ -27,10 +28,10 @@ const MyFeeds = () => {
     try {
       const response = await ApiCall.delete(`/${type}/${id}`);
       console.log(response);
+      dispatch({ type: REFRESH, data: true});
     } catch (e) {
       console.error(e);
     }
-    setRefresh(true);
   };
 
   return (

@@ -11,6 +11,8 @@ const MyFeeds = lazy(() => import('../Containers/MyFeeds/MyFeeds')) ;
 // import ProfilePage from '../Containers/ProfilePage/ProfilePage';
 const Timeline = lazy(() => import('../Containers/Timeline/Timeline'));
 const NotFound = lazy(() => import('../components/NotFound/NotFound'));
+const ViewArticle = lazy(() => import('../Containers/ViewArticle/ViewArticle'));
+const ViewGif = lazy(() => import('../Containers/ViewGif/ViewGif'));
 
 const Routes = () => {
         return(
@@ -21,8 +23,10 @@ const Routes = () => {
              <Route exact path='/' component={LandingPage} />
              <Route path='/register' component={Signup} />
              <Route path='/login' component={Signin} />
-             <Route path='/article' component={CreateArticle} />
+             <Route exact path='/article' component={CreateArticle} />
+             <Route path='/article/:id' component={ViewArticle} />
              <Route path='/gif' component={GifUpload} />
+             <Route path='/gif/:id' component={ViewGif} />
              <Route path='/posts' component={MyFeeds} />
              {/* <Route path='/profile' component={ProfilePage} /> */}
              <Route path='/feeds' component={Timeline} />

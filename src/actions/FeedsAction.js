@@ -1,4 +1,4 @@
-import { FEEDS, FEEDS_LOADING, MY_ARTICLES, MY_GIFS } from './ActionTypes';
+import { FEEDS, FEEDS_LOADING, MY_ARTICLES, MY_GIFS, REFRESH } from './ActionTypes';
 import ApiCall from '../ApiCalls/ApiCall';
 
 export const AllFeeds = () => {
@@ -35,14 +35,15 @@ export const MYFeeds = () => {
             });
 
             data.gifs.map((gif) => {
-              if (gif.authorid === id) {
-                articles.push(gif);
+              if (gif.gifauthorid === id) {
+                gifs.push(gif);
               }
             });
 
             dispatch({ type: MY_ARTICLES, data: articles });
             dispatch({ type: MY_GIFS, data: gifs });
             dispatch({ type: FEEDS_LOADING });
+            dispatch({ type: REFRESH, data: false});
             console.log(data);
           } catch (e) {
             console.error(e);

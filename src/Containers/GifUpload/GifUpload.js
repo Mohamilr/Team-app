@@ -1,26 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { PostGif } from "../../actions/PostGifAction";
+import { GIF_UPLOADING } from "../../actions/ActionTypes";
 import { NotificationManager } from "react-notifications";
 import UserNav from "../../components/UserNav/UserNav";
 import "./GifUpload.css";
 
 // loader
-// import Loader from '../../components/Loader';
-
-const baseUrl = "https://team-work-api.herokuapp.com/api/v1";
+import Loader from "../../components/Loader";
 
 const GifUpload = () => {
   const [gif, setGif] = useState(null);
   const [gifTitle, setGifTile] = useState("");
   const [fileProp, setFileProp] = useState({ name: "", size: "" });
-  const [token, setToken] = useState("");
-
-  useEffect(() => {
-    const tokens = localStorage.getItem("token");
-    setToken(tokens);
-    // if (!token) {
-    //   window.location = "http://localhost:3000/login";
-    // }
-  }, []);
+  const gifLoading = useSelector((state) => state.gifUploading);
+  
+  //
+  const dispatch = useDispatch();
 
   const handleFileUpload = (e) => {
     if (!e.target.files[0]) {
@@ -49,51 +45,17 @@ const GifUpload = () => {
     setGifTile(e.target.value);
   };
 
-  const handleGifPost = async () => {
-    const gifAuthorId = localStorage.getItem("id");
+  const handleGifPost = () => {
+    const gifAuthorId = parseInt(localStorage.getItem("id"));
 
     const data = new FormData();
     data.append("gif", gif);
     data.append("gifTitle", gifTitle);
     data.append("gifAuthorId", gifAuthorId);
 
-    const response = await fetch(`${baseUrl}/gifs`, {
-      method: "POST",
-      body: data,
-      headers: {
-        authorization: `bearer ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .catch((e) => console.log(e));
+    dispatch({ type: GIF_UPLOADING, data: true });
 
-    // notifications
-    if (!response) {
-      return NotificationManager.error(
-        "check your internet connection",
-        "Connection error!",
-        3000
-      );
-    }
-    if (response.error === "image upload must be a gif") {
-      return NotificationManager.error(
-        "image upload must be a gif",
-        "Error!",
-        3000
-      );
-    } else if (response.error === "all fields are required") {
-      return NotificationManager.error(
-        "upload a gif and add a title",
-        "Error!",
-        3000
-      );
-    } else {
-      return NotificationManager.success(
-        "gif image successfully posted",
-        "Successful!",
-        3000
-      );
-    }
+    dispatch(PostGif(data));
   };
 
   const { name, size } = fileProp;
@@ -113,22 +75,33 @@ const GifUpload = () => {
               handleFileUpload(e);
             }}
           />
-          <label htmlFor="file">
-            <i className="fas fa-plus-circle"></i>
-          </label>
-          <input
-            type="text"
-            placeholder="Gif title"
-            className="title"
-            onChange={(e) => handleGifTitle(e)}
-          />
-          <div className="preview">
-            <p>{name ? name : "gif name"}</p>
-            <p>{size ? size : "gif size"}</p>
+          <div>
+            {gifLoading ? (
+              <Loader />
+            ) : (
+              <div>
+                <label htmlFor="file">
+                  <i className="fas fa-plus-circle"></i>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Gif title"
+                  className="title"
+                  onChange={(e) => handleGifTitle(e)}
+                />
+                <div className="preview">
+                  <p>{name ? name : "gif name"}</p>
+                  <p>{size ? size : "gif size"}</p>
+                </div>
+                <button
+                  className="btn-upload"
+                  onClick={(e) => handleGifPost(e)}
+                >
+                  Upload
+                </button>
+              </div>
+            )}
           </div>
-          <button className="btn-upload" onClick={(e) => handleGifPost(e)}>
-            Upload
-          </button>
         </div>
       </div>
     </div>

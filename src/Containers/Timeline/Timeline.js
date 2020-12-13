@@ -34,7 +34,7 @@ const Timeline = () => {
             articles.map((article, i) => (
               <div className="articles" key={i}>
                 <div className="article-properties">
-                  <Link to="/">
+                  <Link to={`/article/${article.articleid}`}>
                     <h3 className="article-title">{article.title}</h3>
                   </Link>
                   <p>{article.createdon}</p>
