@@ -48,7 +48,7 @@ console.log(gifs)
             articles.map((article, i) => (
               <div className="articles" key={i}>
                 <div className="article-properties">
-                  <Link to="/">
+                <Link to={`/article/${article.articleid}`}>
                     <h3>{article.title}</h3>
                   </Link>
                   <p>{article.createdon}</p>
@@ -77,7 +77,9 @@ console.log(gifs)
               <div className="gifs" key={i}>
                 <img src={gif.image} alt="gif" className="gif-image" />
                 <div className="gif-properties">
+                <Link to={`/gif/${gif.gifid}`}>
                   <h3>{gif.giftitle}</h3>
+                  </Link>
                   <div>{gif.gifcreatedon}</div>
                 </div>
                 <div className="option">

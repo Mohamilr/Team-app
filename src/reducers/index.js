@@ -3,6 +3,7 @@ import { loginReducer, SignupReducer } from './RegisterReducer';
 import { Feeds, FeedsLoading, MyArticles, MyGifs } from './FeedsReducer';
 import { gifUploading } from './PostGifReducer';
 import { getAnArticle, getAnArticleLoading } from './ViewArticleReducer';
+import { getAGif, getAGifLoading } from './ViewGifReducer';
 import { refresh } from './GlobalReducer';
 import { PostCommentLoading } from './CommentReducer';
 
@@ -16,8 +17,11 @@ const allReducers = combineReducers({
     gifUploading,
     getAnArticle,
     getAnArticleLoading,
-    refresh,
-    PostCommentLoading
+    getAGif,
+    getAGifLoading,
+    PostCommentLoading,
+    refresh
+    
     // loading
 });
 

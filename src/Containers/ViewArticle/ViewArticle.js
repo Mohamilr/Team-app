@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getAnArticle, PostComments } from "../../actions/ViewArticleAction";
+import { getAnArticle, postComments } from "../../actions/ViewArticleAction";
 import Loader from "../../components/Loader";
 import "./ViewArticle.css";
 
@@ -27,7 +27,7 @@ const ViewArticle = ({ match }) => {
       const authorId = parseInt(localStorage.getItem('id'));
       const data = { comment: writeComment, authorId }
     
-      dispatch(PostComments(data, match.params.id));
+      dispatch(postComments(data, match.params.id));
 
   }
 
@@ -63,12 +63,12 @@ const ViewArticle = ({ match }) => {
           )}
           </form>
         </div>
-        <div>
+        <div className='comments'>
           {loading ? (
             <Loader />
           ) : comment ? (
             comment.map((comment, i) => (
-              <div className="comments" key={i}>
+              <div className="comment" key={i}>
                 {/* <div className='article-properties'>
             <p>time</p>
         </div> */}

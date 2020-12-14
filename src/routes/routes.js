@@ -25,7 +25,7 @@ const Routes = () => {
              <Route path='/login' component={Signin} />
              <Route exact path='/article' component={CreateArticle} />
              <Route path='/article/:id' component={ViewArticle} />
-             <Route path='/gif' component={GifUpload} />
+             <Route exact path='/gif' component={GifUpload} />
              <Route path='/gif/:id' component={ViewGif} />
              <Route path='/posts' component={MyFeeds} />
              {/* <Route path='/profile' component={ProfilePage} /> */}

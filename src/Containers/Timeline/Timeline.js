@@ -53,7 +53,9 @@ const Timeline = () => {
                 <div className="gif" key={i}>
                   <img src={gif.image} alt="gif" className="gif-image" />
                   <div className="gif-properties">
+                  <Link to={`/gif/${gif.gifid}`}>
                     <h3>{gif.giftitle}</h3>
+                    </Link>
                     <div>{gif.gifcreatedon}</div>
                   </div>
                 </div>

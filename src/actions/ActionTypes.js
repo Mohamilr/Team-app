@@ -14,5 +14,8 @@ export const VIEW_ARTICLE = 'VIEW_ARTICLE';
 export const VIEW_ARTICLE_LOADING = 'VIEW_ARTICLE_LOADING';
 //
 export const POST_COMMENT_LOADING = 'POST_COMMENT_LOADING';
+//
+export const VIEW_GIF = 'VIEW_GIF';
+export const VIEW_GIF_LOADING = 'VIEW_GIF_LOADING';
 // global reload
 export const REFRESH = 'REFRESH';
