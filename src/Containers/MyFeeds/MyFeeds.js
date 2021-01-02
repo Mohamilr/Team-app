@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { NotificationManager } from "react-notifications";
 import { MYFeeds as MyFeed } from "../../actions/FeedsAction";
 import { REFRESH } from '../../actions/ActionTypes';
+import { descendingOrder } from '../../Utils/SortData';
 import UserNav from "../../components/UserNav/UserNav";
 import ApiCall from "../../ApiCalls/ApiCall";
 import "./MyFeeds.css";
@@ -17,8 +18,18 @@ const MyFeeds = () => {
   const loading = useSelector((state) => state.FeedsLoading);
   const refresh = useSelector((state) => state.refresh);
 
+  //
+  if(articles) {
+    descendingOrder(articles);
+  }
+
+  if(gifs) {
+    descendingOrder(gifs);
+  }
+  
+  //
   const dispatch = useDispatch();
-console.log(gifs)
+
   useEffect(() => {
     dispatch(MyFeed());
   }, [refresh]);
@@ -48,14 +59,16 @@ console.log(gifs)
             articles.map((article, i) => (
               <div className="articles" key={i}>
                 <div className="article-properties">
-                <Link to={`/article/${article.articleid}`}>
+                <Link to={`/article/${article.title}`}>
                     <h3>{article.title}</h3>
                   </Link>
                   <p>{article.createdon}</p>
                 </div>
                 <article>{article.article}</article>
                 <div className="options">
+                  <Link to={`/edit-article/${article.articleid}`}>
                   <button className="btn update">Edit</button>
+                  </Link>
                   <button
                     className="btn delete"
                     onClick={(e) => {
@@ -77,7 +90,7 @@ console.log(gifs)
               <div className="gifs" key={i}>
                 <img src={gif.image} alt="gif" className="gif-image" />
                 <div className="gif-properties">
-                <Link to={`/gif/${gif.gifid}`}>
+                <Link to={`/gif/${gif.giftitle}`}>
                   <h3>{gif.giftitle}</h3>
                   </Link>
                   <div>{gif.gifcreatedon}</div>

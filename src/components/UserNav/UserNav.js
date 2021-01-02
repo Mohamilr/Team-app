@@ -19,9 +19,9 @@ const UserNav = () => {
                             <Link to='/feeds' className='app-name app'>Team App</Link>
                             <ul>
                                 <li><NavLink activeClassName='active' to='/feeds'>Timeline</NavLink></li>
-                                <li><NavLink activeClassName='active' to='/article'>Post Article</NavLink></li>
+                                <li><NavLink activeClassName='active' to='/create-article'>Post Article</NavLink></li>
                                 <li><NavLink activeClassName='active' to='/gif'>Post Gif</NavLink></li>
-                                <li><NavLink activeClassName='active' to='/posts'>My Posts</NavLink></li>
+                                <li><NavLink activeClassName='active' to='/my-posts'>My Posts</NavLink></li>
                                 <li onClick={() => { localStorage.removeItem('token'); localStorage.removeItem('id') }}><Link to='/'>Log Out</Link></li>
                             </ul>
                         </nav>

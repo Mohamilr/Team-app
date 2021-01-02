@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { AllFeeds } from "../../actions/FeedsAction";
+//
+import { descendingOrder } from "../../Utils/SortData";
+import { createMarkup } from "../CreateArticle/CreateArticle";
 import { Link } from "react-router-dom";
 import UserNav from "../../components/UserNav/UserNav";
 import "./Timeline.css";
@@ -12,6 +15,15 @@ const Timeline = () => {
   const { articles } = useSelector((state) => state.feeds);
   const { gifs } = useSelector((state) => state.feeds);
   const loading = useSelector((state) => state.FeedsLoading);
+
+  //
+  if (articles) {
+    descendingOrder(articles);
+  }
+
+  if (gifs) {
+    descendingOrder(gifs);
+  }
 
   //
   const dispatch = useDispatch();
@@ -40,6 +52,9 @@ const Timeline = () => {
                   <p>{article.createdon}</p>
                 </div>
                 <article>{article.article}</article>
+                <article style={{display: 'inline-block'}}
+                  dangerouslySetInnerHTML={createMarkup(article.article)}
+                ></article>
               </div>
             ))
           ) : (
@@ -53,8 +68,8 @@ const Timeline = () => {
                 <div className="gif" key={i}>
                   <img src={gif.image} alt="gif" className="gif-image" />
                   <div className="gif-properties">
-                  <Link to={`/gif/${gif.gifid}`}>
-                    <h3>{gif.giftitle}</h3>
+                    <Link to={`/gif/${gif.giftitle}`}>
+                      <h3>{gif.giftitle}</h3>
                     </Link>
                     <div>{gif.gifcreatedon}</div>
                   </div>

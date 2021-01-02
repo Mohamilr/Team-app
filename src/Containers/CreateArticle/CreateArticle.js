@@ -1,61 +1,79 @@
-import React, {Component} from 'react';
-import FroalaEditor from 'react-froala-wysiwyg';
-// Require Editor JS files.
-import 'froala-editor/js/froala_editor.pkgd.min.js';
+import React, { useState } from "react";
+import { useDispatch } from 'react-redux';
+import DOMPurify from 'dompurify';
+import { WysiwygEditor } from '../../shared/WysiwygEditor';
+import { postArticle } from '../../actions/PostArticleAction';
+import UserNav from "../../components/UserNav/UserNav";
+import "./CreateArticle.css";
 
-// Require Editor CSS files.
-import 'froala-editor/css/froala_style.min.css';
-import 'froala-editor/css/froala_editor.pkgd.min.css';
 
-// Require Font Awesome.
-// import 'font-awesome/css/font-awesome.css';
+// new stuff here
+import { EditorState, convertToRaw } from 'draft-js';
+import draftToHtml from 'draftjs-to-html';
 
-import UserNav from '../../components/UserNav/UserNav';
+export const createMarkup = (html) => {
+  return  {
+    __html: DOMPurify.sanitize(html)
+  }
+}
 
-import './CreateArticle.css';
-// new FroalaEditor('#textarea')
+const ArticlePage = () => {
+  const [title, setTitle] = useState("");
+  const [article, setArticle] = useState("");
 
-class ArticlePage extends Component {
-    constructor () {
-        super();
-        this.state = {
-            bodyValue: {
-                title: '',
-                article: ''
-            }
-        }
+
+  // new changes here
+  const [editorState, setEditorState] = useState(
+    () => EditorState.createEmpty(),
+  );
+
+
+
+
+
+  //
+  const dispatch = useDispatch();
+  
+
+
+  const handlePostArticle = () => {
+    const authorId = parseInt(localStorage.getItem("id"));
+    const body = {
+      title,
+      article,
+      authorId
     }
+    dispatch(postArticle(body));
+  }
 
-    formInput = (e) => {
-       let fieldData = {...this.state.bodyValue};
-       fieldData[e.target.name] = e.target.value;
+  const handleTitle = (e) => {
+      setTitle(e.target.value);
+  }
 
-       this.setState({
-           bodyValue: fieldData
-       })
-
-       console.log(fieldData)
-    }
-
-    render () {
-        return (
-            <div className='container'>
-                <UserNav />
-                <div className='write-article'>
-                    <h1 className='header'>Write Your Article</h1>
-                    <form>
-                    <input type='text' placeholder='Article Title' name='title' className='title' onChange={this.formInput} />
-                    <div className='textarea'>
-                        {/* <textarea id='textarea'></textarea> */}
-                    <FroalaEditor name='article' model={this.state.content} onModelChanhe={this.handleModelChange} />
-                    </div>
-                <button className='btn-upload'>Publish</button>
-                </form>
-                </div>
-
-            </div>
-        );
-    }
+  return (
+    <div className="container">
+      <UserNav />
+      <div className="write-article">
+        <h1 className="header">Write Your Article</h1>
+        <form onSubmit={(e) => {
+          e.preventDefault();
+          handlePostArticle()
+        }}>
+          <input
+            type="text"
+            placeholder="Article Title"
+            name="title"
+            className="title"
+            onChange={(e) => handleTitle(e)}
+          />
+          <div className="textarea">
+            <WysiwygEditor editorState={editorState} setEditorState={setEditorState} setArticle={setArticle} />
+          </div>
+          <button className="btn-upload">Publish</button>
+        </form>
+      </div>
+    </div>
+  );
 };
 
 export default ArticlePage;

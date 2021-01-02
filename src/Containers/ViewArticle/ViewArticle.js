@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAnArticle, postComments } from "../../actions/ViewArticleAction";
+// 
+import { createMarkup } from '../CreateArticle/CreateArticle';
 import Loader from "../../components/Loader";
 import "./ViewArticle.css";
 
@@ -37,6 +39,7 @@ const ViewArticle = ({ match }) => {
         {/* <Link to='/feeds'>Back to feeds</Link> */}
         <h2>{title}</h2>
         <article>{article}</article>
+        <article dangerouslySetInnerHTML={createMarkup(article)}></article>
       </div>
       <hr />
       <div className="comment-section">
