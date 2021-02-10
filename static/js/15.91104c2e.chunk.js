@@ -1,0 +1,2 @@
+(this["webpackJsonpteam-app"]=this["webpackJsonpteam-app"]||[]).push([[15],{290:function(e,a,t){},298:function(e,a,t){"use strict";t.r(a);var n=t(0),c=t.n(n),p=t(18);t(290);a.default=function(){return c.a.createElement("main",{className:"error-page"},c.a.createElement("p",{className:"back-link"},c.a.createElement(p.b,{to:"/"},"Go back to home page")))}}}]);
+//# sourceMappingURL=15.91104c2e.chunk.js.map
