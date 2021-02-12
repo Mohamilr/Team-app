@@ -1,40 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
-import { Input } from "../../shared/FormTags";
+import { loginSchema } from '../../Utils/validationSchema';
 // action
 import { LoginAction } from "../../actions/RegisterAction";
 import "./Signin.css";
 
 const Signin = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { register, handleSubmit, errors } = useForm({
+    resolver: yupResolver(loginSchema)
+  });
+
   const redirect = useSelector(state => state.login);
   //
   const dispatch = useDispatch();
 
-  const formInput = (e, type) => {
-    switch (type) {
-      case "email":
-        setEmail(e.target.value);
-        break;
-      case "password":
-        setPassword(e.target.value);
-        break;
-      default:
-        return type;
-    }
-  };
-
-  // form data
-  const body = {
-    email,
-    password,
-  };
-
-  const handleFormSubmit = () => {
+  const formSubmit = (body) => {
     dispatch(LoginAction(body));
   };
 
@@ -48,28 +33,21 @@ const Signin = () => {
       <div className="signin-form-container">
         <h2 className="reg">Welcome back</h2>
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleFormSubmit();
-          }}
+          onSubmit={handleSubmit(formSubmit)}
         >
-          <Input
-            type="email"
+          <input type="email"     type="email"
             placeholder="User@mail.com"
             name="email"
             className="details"
-            onChange={(e) => formInput(e, "email")}
-          />
-          <br />
-          <Input
-            type="password"
+            ref={register} />
+            <p>{errors.email?.message}</p>
+          <input type="password"
             placeholder="******"
             name="password"
             className="details"
-            onChange={(e) => formInput(e, "password")}
-          />
-          <br />
-          <button className="btn-reg">Log in</button>
+            ref={register} />
+             <p>{errors.password?.message}</p>
+          <input type='submit' className="btn-reg" />
         </form>
         <p>
           You don't have an accout? please <Link to="/register">Signup</Link>

@@ -1,70 +1,25 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
-import { Input } from "../../shared/FormTags";
+import { signupSchema } from "../../Utils/validationSchema";
 //
 import { SignupAction } from "../../actions/RegisterAction";
 import "./Signup.css";
 
 const Signup = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [gender, setGender] = useState("");
-  const [jobRole, setJobRole] = useState("");
-  const [department, setDepartment] = useState("");
-  const [address, setAddress] = useState("");
+  const { register, handleSubmit, errors } = useForm({
+    resolver: yupResolver(signupSchema)
+  })
   const redirect = useSelector((state => state.signup));
   //
   const dispatch = useDispatch();
 
-  const formInput = (e, type) => {
-    switch (type) {
-      case "firstname":
-        setFirstName(e.target.value);
-        break;
-      case "lastname":
-        setLastName(e.target.value);
-        break;
-      case "email":
-        setEmail(e.target.value);
-        break;
-      case "password":
-        setPassword(e.target.value);
-        break;
-      case "gender":
-        setGender(e.target.value);
-        break;
-      case "jobrole":
-        setJobRole(e.target.value);
-        break;
-      case "department":
-        setDepartment(e.target.value);
-        break;
-      case "address":
-        setAddress(e.target.value);
-        break;
-      default:
-        return type;
-    }
-  };
-
-  const bodyValue = {
-    firstName,
-    lastName,
-    email,
-    password,
-    gender,
-    jobRole,
-    department,
-    address,
-  };
-
-  const handleFormSubmit = () => {
-    dispatch(SignupAction(bodyValue));
+  const formSubmit = (body) => {
+    dispatch(SignupAction(body));
   };
 
   if (redirect) {
@@ -76,70 +31,75 @@ const Signup = () => {
       <div className="form-container">
         <h2 className="reg">Register for free</h2>
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleFormSubmit();
-          }}
+          onSubmit={handleSubmit(formSubmit)}
         >
           <div>
-            <Input
+            <input
               type="text"
               name="firstName"
               placeholder="First name"
-              onChange={(e) => formInput(e, "firstname")}
+             ref={register}
             />
-            <Input
+             <p>{errors.firstName?.message}</p>
+            <input
               type="text"
               name="lastName"
               placeholder="Last name"
-              onChange={(e) => formInput(e, "lastname")}
+              ref={register}
             />
+             <p>{errors.lastName?.message}</p>
           </div>
           <div>
-            <Input
+            <input
               type="email"
               name="email"
               placeholder="User@mail.com"
-              onChange={(e) => formInput(e, "email")}
+              ref={register}
             />
-            <Input
+             <p>{errors.email?.message}</p>
+            <input
               type="password"
               name="password"
               placeholder="******"
-              onChange={(e) => formInput(e, "password")}
+              ref={register}
             />
+             <p>{errors.password?.message}</p>
           </div>
-          <Input
+          <input
             type="text"
             name="gender"
             placeholder="Gender"
             className="info"
-            onChange={(e) => formInput(e, "gender")}
+            ref={register}
           />
+           <p>{errors.gender?.message}</p>
           <br />
-          <Input
+          <input
             type="text"
             name="jobRole"
             placeholder="Jobrole"
             className="info"
-            onChange={(e) => formInput(e, "jobrole")}
+            ref={register}
           />
+           <p>{errors.jobRole?.message}</p>
           <br />
-          <Input
+          <input
             type="text"
             name="department"
             placeholder="Department"
             className="info"
-            onChange={(e) => formInput(e, "department")}
+            ref={register}
           />
+           <p>{errors.department?.message}</p>
           <br />
-          <Input
+          <input
             type="text"
             name="address"
             placeholder="Address"
             className="info"
-            onChange={(e) => formInput(e, "address")}
+            ref={register}
           />
+           <p>{errors.address?.message}</p>
           <br />
           {/* {loading ? (
             <button className="btn-reg">loading ...</button>
