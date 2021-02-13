@@ -1,5 +1,6 @@
 import React , { lazy, Suspense } from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import PrvateRoute from './privateRoute';
 import { NotificationContainer } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 const LandingPage = lazy(() => import('../Containers/LandingPage/LandingPage'));
@@ -18,22 +19,20 @@ const Routes = () => {
         return(
             <Suspense fallback='loading'>
             <Router>
-            <div>
             <Switch>
              <Route exact path='/' component={LandingPage} />
              <Route path='/register' component={Signup} />
              <Route path='/login' component={Signin} />
-             <Route exact path='/create-article' component={CreateArticle} />
-             <Route path='/article/:id' component={ViewArticle} />
-             <Route path='/edit-article/:id' component={EditArticle} />
-             <Route exact path='/gif' component={GifUpload} />
-             <Route path='/gif/:id' component={ViewGif} />
-             <Route path='/my-posts' component={MyFeeds} />
-             <Route path='/feeds' component={Timeline} />
+             <PrvateRoute exact path='/create-article' component={CreateArticle} />
+             <PrvateRoute path='/article/:id' component={ViewArticle} />
+             <PrvateRoute path='/edit-article/:id' component={EditArticle} />
+             <PrvateRoute exact path='/gif' component={GifUpload} />
+             <PrvateRoute path='/gif/:id' component={ViewGif} />
+             <PrvateRoute path='/my-posts' component={MyFeeds} />
+             <PrvateRoute path='/feeds' component={Timeline} />
              <Route component={NotFound} />
              </Switch>
              <NotificationContainer />
-            </div>
             </Router>
             </Suspense>
         );

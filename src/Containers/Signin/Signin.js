@@ -1,21 +1,21 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
-import { loginSchema } from '../../Utils/validationSchema';
+import { loginSchema } from "../../Utils/validationSchema";
 // action
 import { LoginAction } from "../../actions/RegisterAction";
 import "./Signin.css";
 
-const Signin = () => {
+const Signin = (props) => {
   const { register, handleSubmit, errors } = useForm({
-    resolver: yupResolver(loginSchema)
+    resolver: yupResolver(loginSchema),
   });
 
-  const redirect = useSelector(state => state.login);
+  const redirect = useSelector((state) => state.login);
   //
   const dispatch = useDispatch();
 
@@ -23,8 +23,18 @@ const Signin = () => {
     dispatch(LoginAction(body));
   };
 
+ 
+  // the page the user intend to go before sign in
+  let referer;
+  if (props.location.state !== null) {
+    referer = props.location.state.referer;
+  } else {
+    referer = "/feeds";
+  }
+
+// page breaks when login is visited af logout : fix
   if (redirect) {
-    return <Redirect to="/feeds" />;
+    return <Redirect to='/feeds' />;
   }
 
   return (
@@ -32,22 +42,25 @@ const Signin = () => {
       <Navbar />
       <div className="signin-form-container">
         <h2 className="reg">Welcome back</h2>
-        <form
-          onSubmit={handleSubmit(formSubmit)}
-        >
-          <input type="email"     type="email"
+        <form onSubmit={handleSubmit(formSubmit)}>
+          <input
+            type="email"
+            type="email"
             placeholder="User@mail.com"
             name="email"
             className="details"
-            ref={register} />
-            <p>{errors.email?.message}</p>
-          <input type="password"
+            ref={register}
+          />
+          <p>{errors.email?.message}</p>
+          <input
+            type="password"
             placeholder="******"
             name="password"
             className="details"
-            ref={register} />
-             <p>{errors.password?.message}</p>
-          <input type='submit' className="btn-reg" />
+            ref={register}
+          />
+          <p>{errors.password?.message}</p>
+          <input type="submit" className="btn-reg" />
         </form>
         <p>
           You don't have an accout? please <Link to="/register">Signup</Link>

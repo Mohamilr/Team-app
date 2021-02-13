@@ -27,15 +27,9 @@ const ArticlePage = () => {
     () => EditorState.createEmpty(),
   );
 
-
-
-
-
   //
   const dispatch = useDispatch();
   
-
-
   const handlePostArticle = () => {
     const authorId = parseInt(localStorage.getItem("id"));
     const body = {

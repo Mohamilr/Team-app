@@ -1,7 +1,7 @@
 import React, { StrictMode } from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import AuthProvider from "./Utils/AuthContext";
+// import AuthProvider from "./Utils/AuthContext";
 import store from './store/store';
 import "./index.css";
 import App from "./App";
@@ -10,9 +10,9 @@ import * as serviceWorker from "./serviceWorker";
 ReactDOM.render(
   <StrictMode>
     <Provider store={store}>
-      <AuthProvider>
+      {/* <AuthProvider> */}
         <App />
-      </AuthProvider>
+      {/* </AuthProvider> */}
     </Provider>
   </StrictMode>,
   document.getElementById("root")

@@ -28,6 +28,7 @@ export const WysiwygEditor = ({ editorState, setEditorState, setArticle }) => {
       toolbarClassName="toolbar-class"
       editorState={editorState}
       onEditorStateChange={handleEditorChange}
+      autoFocus
     />
   );
 };
