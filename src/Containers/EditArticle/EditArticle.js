@@ -6,6 +6,7 @@ import { getAnArticle } from "../../actions/ViewArticleAction";
 import { WysiwygEditor } from "../../shared/WysiwygEditor";
 import UserNav from "../../components/UserNav/UserNav";
 import "../CreateArticle/CreateArticle.css";
+import { Redirect } from "react-router-dom";
 
 const EditArticle = ({ match }) => {
   const { title } = useSelector((state) => state.getAnArticle);
@@ -13,6 +14,10 @@ const EditArticle = ({ match }) => {
   //
   const [editedTitle, setEditedTitle] = useState("");
   const [editedArticle, setEditedArticle] = useState("");
+
+  //
+ 
+  // const [redirect, setRedirect] = useState(false);
 
   //
   const dispatch = useDispatch();
@@ -27,6 +32,8 @@ const EditArticle = ({ match }) => {
         )
       )
     );
+
+    setEditedTitle(title);
   }, [article]);
 
   useEffect(() => {
@@ -41,12 +48,19 @@ const EditArticle = ({ match }) => {
       authorId,
     };
     dispatch(editArticle(body, match.params.id));
+    // setRedirect(true);
   };
 
   const handleTitle = (e) => {
       setEditedTitle(e.target.value);
   }
 
+  // create a loader, article should update before redirecting to the article page 
+  // if(redirect) {
+  //   return <Redirect to={`/article/${match.params.id}`} />
+  // }
+// 
+// article doesn\'t show data if its not clicked
   return (
     <div className="container">
       <UserNav />
@@ -63,7 +77,8 @@ const EditArticle = ({ match }) => {
             placeholder="Article Title"
             name="title"
             className="title"
-            value={title}
+            value={editedTitle}
+            autoFocus
             onChange={(e) => handleTitle(e)}
           />
           <div className="textarea">
