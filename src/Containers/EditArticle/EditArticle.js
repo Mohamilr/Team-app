@@ -33,6 +33,7 @@ const EditArticle = ({ match }) => {
       )
     );
 
+    setEditedArticle(article);
     setEditedTitle(title);
   }, [article]);
 
