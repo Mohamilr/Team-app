@@ -18,7 +18,6 @@ export const WysiwygEditor = ({ editorState, setEditorState, setArticle }) => {
   const convertContentToHTML = () => {
     let currentContentAsHTML = draftToHtml(convertToRaw(editorState.getCurrentContent()));
     setArticle(currentContentAsHTML);
-    console.log(currentContentAsHTML)
   }
 
   return (
@@ -28,7 +27,6 @@ export const WysiwygEditor = ({ editorState, setEditorState, setArticle }) => {
       toolbarClassName="toolbar-class"
       editorState={editorState}
       onEditorStateChange={handleEditorChange}
-      autoFocus
     />
   );
 };
